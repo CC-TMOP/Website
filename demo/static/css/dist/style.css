@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Trade+Winds&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    /* 引入字体 */
+    font-family: 'Montserrat';
+}
+body{
+    background: #f3f3f4;
+    font-size: 14px;
+    /* 字间距 */
+    letter-spacing: 1px;
+}
+
+.wrapper{
+    /* 弹性布局 */
+    display: flex;
+    width: 100%;
+}
+
+.sidebar{
+    /* 相对定位 */
+    position: relative;
+} 
+
+.sidebar .bg_shadow{
+    width: 100%;
+    height: 100%;
+    /* 定位 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar_inner{
+    width: 232px;
+    position: fixed;
+    margin-top: 0;
+    left: 0;
+    /* 百分之百的窗口高度 */
+    height: 100vh;
+    background: #ffffff;
+    z-index: 999;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 13%),  0px 0px 0px rgb(0 0 0 / 0%);
+}
+
+.main_container{
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    transition: all 0.3s ease;
+}
+
+
+/* 侧边导航栏开始 */
+.sidebar_inner .siderbar_menu{
+    height: 505px;
+    overflow: auto;
+}
+
+.sidebar_inner .siderbar_menu> li > a{
+    padding: 4px 50px;
+    display: flex;
+    align-items: center;
+    /* 相对定位 */
+    position: relative;
+    margin-bottom: 1px;
+    color: #8b8e93;
+}
+
+.merchant_home {
+    top: auto;
+    left: auto;
+    width: 30px;
+    height: 30px;
+    position:absolute;
+    background-size: 100% 100%;
+    background-image: url("/static/image/background/spaceShip.png");
+}
+
+.sidebar_inner .siderbar_menu> li > a .icon{
+    font-size: 25px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+.sidebar_inner .siderbar_menu> li > a .icon> img {
+    height: 25px;
+    width: 22.88px;
+}
+
+.sidebar_inner .close{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 25px;
+    color: #fff;
+    /* 鼠标放上变小手 */
+    cursor: pointer;
+    display: none;
+}
+
+.sidebar_inner .close:hover,
+.navbar .hamburger:hover{
+    opacity: 0.7;
+}
+.navbar{
+    background: #fff;
+    height: 50px;
+    width: 100%;
+    box-shadow:  0 3px 5px rgba(0, 0, 0, 0.125);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar .hamburger{
+    font-size: 25px;
+    cursor: pointer;
+    margin-right: 20px;
+    color: #000000;
+    display: none;
+}
+
+.navbar .logo a{
+    font-family: 'Trade Winds';
+    color: #000000;
+    font-size: 20px;
+}
+.content{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content .item1{
+    background: #fff;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 13%), -2px -2px 4px rgb(0 0 0 / 13%);
+    margin: 1px 5px;
+    width: 100%;
+    height: 210px;
+    padding: 20px;               
+}
+
+.content .item_set {
+    width: 100%;
+}
+
+.content .item2{
+    background: #fff;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 13%), -2px -2px 4px rgb(0 0 0 / 13%);
+    margin: 10px 6px;
+    width: 67%;
+    height: 237px;
+    padding: 20px;
+    position: relative;
+    display: inline;
+    float: left;                
+}
+
+.content .item3{
+    background: #fff;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 13%), -2px -2px 4px rgb(0 0 0 / 13%);
+    margin: 7px -5px;
+    display: inline;
+    width: 30%;
+    height: 124px;
+    padding: 20px;
+    right: 1%;
+    position: relative;
+    float: right;                
+}
+
+.content .item4{
+    background: #fff;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 13%), -2px -2px 4px rgb(0 0 0 / 13%);
+    margin: 7px -5px;
+    width: 29.8%;
+    padding: 20px;
+    position: relative;
+    display: inline;
+    right: 1%;
+    bottom: 1%;
+    height: 101px;
+    float: right;               
+}
+
+
+.siderbar_menu > li.active .arrow{
+    transform: rotate(180deg);
+    transition: all 0.3s ease;
+}
+
+.menu_order_content {
+    left: 26%;
+    top: 18%;
+    width: 66%;
+    background-color: white;
+    height: 68%;
+    position: absolute;
+}
+
+.menu_order_content_h1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.circle-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-right: 10px;
+  }
+  
+  .active {
+    background-color: green;
+  }
+  
+
+@media (max-width:1024px){
+    .sidebar_inner{
+        left: -115%;
+        transition: all 0.5s ease;
+    }
+    .main_container{
+        width: 100%;
+        margin-left: 0;
+    }
+    .sidebar_inner .close,
+    .navbar .hamburger{
+        display: block;
+    }
+    .content .item{
+        width: 47%;
+    }
+    .wrapper.active .sidebar_inner{
+        left: 0;
+        transition: all 0.5s ease;
+    }
+    .wrapper.active .sidebar .bg_shadow{
+        visibility: visible;
+        opacity: 0.7;
+    }
+}
+
+@media (max-width:528px) {
+    .content .item{
+        width: 100%;
+    }
+}
