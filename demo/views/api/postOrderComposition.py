@@ -19,7 +19,7 @@ def postOrderinfo(request):
         merchant_id=merchant_id,
         order_status=1, # 创建新订单
     )
-    order.save()
+    order_info.save()
     return JsonResponse({
         'user_name': user.user_name,
         'user.tel':user.user_tel,
