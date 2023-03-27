@@ -19,7 +19,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class MerchantAdmin(admin.ModelAdmin):
-    list_display = ['merchant_id','merchant_name','merchant_password','merchant_address','merchant_status',"service_type","block"]
+    list_display = ['merchant_id','merchant_name','merchant_tel','merchant_password','merchant_address','merchant_status',"service_type","block"]
 
 class RequirementAdmin(admin.ModelAdmin):
     list_display = ['requirement_id','requirement_name','requirement_value']

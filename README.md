@@ -28,7 +28,7 @@ return JsonResponse({
 })
 ```
 
-### 1. TelToUsername接口
+### 1. TelToUserName接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -44,6 +44,12 @@ return JsonResponse({
 | result   | string   | 是       | 返回结果 |
 | username | string   | 否       |返回用户名|
 
+```python
+return JsonResponse({
+        'result':"success"
+        'merchant_phonenumber': user.user_name
+    })
+```
 
 ### 2. GetRequirements接口(返回需求列表)
 - 接口URL: 
@@ -61,6 +67,12 @@ return JsonResponse({
 | result   | string   | 是       | 返回结果 |
 | requirements | list | 是     | [需求id, 需求名] |
 
+```python
+ return JsonResponse({
+        'result':"success",
+        'requirements': requirements_list
+    })
+```
 
 ### 3. PostOrderinfo接口 （生成订单）
 - 接口URL: 
@@ -69,10 +81,9 @@ return JsonResponse({
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
-| username | string   | 是       | 用户名   |
+| ordernumber | string   | 是       | 订单号  |
 | phonenumber | Number   | 否       | 用户电话   |
 | requirement_id  | Number   | 是       | 需求id   |
-| requirement_name  | string   | 否      | 需求名   |
 
 - 响应格式
 
@@ -97,6 +108,12 @@ return JsonResponse({
 | result    | string    | 是       | 返回结果success |
 | OrdersId | list  | 是 |所有未处于完成状态的订单|
 
+```python
+return JsonResponse({
+    'result':"success",
+    'OrddersId':orders
+})
+```
 
 ### 5. OrderIdToInfo接口
 - 接口URL: 
@@ -112,12 +129,22 @@ return JsonResponse({
 | 参数名称  | 参数类型  | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | --------|
 | result    | string    | 是       | 返回结果success |
-| Username | stirng  | 是 |用户名|
+| username | stirng  | 是 |用户名|
 | phonenumber | Number   | 是    | 用户电话   |
 |requirement|string|是|需求名称|
-|UserAddress|string |是|用户地址|
-|city|list|是|[citycode, cityname]|
+|useraddress|string |是|用户地址|
+|city|list|是|[citycode, cityname]|   
 
+```python   
+return JsonResponse({
+    'result':"success",
+    'username':user.user_name,
+    'phonenumber':user.user_tel,
+    'requirement':order.order_type_number,
+    'useraddress':user.user_address,
+    'city':user.user_address
+})
+```
 
 ### 6. CityToDistrict接口
 - 接口URL: 
@@ -168,4 +195,10 @@ return JsonResponse({
 | result    | string    | 是       | 返回结果success |
 |merchant_phonenumber| string | 是| 商家电话|
 
+```python
+return JsonResponse({
+    'result':"success"
+    'merchant_phonenumber': merchant_tel
+})
+```
 

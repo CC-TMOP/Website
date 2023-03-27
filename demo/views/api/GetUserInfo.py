@@ -3,7 +3,7 @@ from demo.models.user.user_table import User_table
 
 # GET /api/User_info
 
-def getUserinfo(request):
+def GetUserInfo(request):
     user_tel = request.GET.get('user_tel')
     dry_run = request.GET.get('dry_run')
     if dry_run == 1:
