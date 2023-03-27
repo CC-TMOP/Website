@@ -28,7 +28,7 @@ return JsonResponse({
 })
 ```
 
-### TelToUsername接口(修改了一下：已弃用)
+### 1. TelToUsername接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -45,29 +45,7 @@ return JsonResponse({
 | username | string   | 否       |返回用户名|
 
 
-### PostOrderinfo接口 （生成订单）
-- 接口URL: 
-- 调用方式: POST
-- 参数格式:
-
-| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
-| -------- | -------- | -------- | -------- |
-| order_number | int   | 是       | 订单号   |
-| user_id      | int   | 是       | 用户id   |
-| merchant_id  | int   | 是       | 商家id   |
-
-- 响应格式
-
-| 参数名称  | 参数类型  | 是否必选 | 参数说明 |
-| --------  | -------- | -------- | --------|
-| user_name     | string   | 是       |返回用户名  |
-| user_tel      | string   | 否       |返回用户电话|
-| user_address  | string   | 否       |返回用户地址|
-| merchant_name | string   | 否       |返回商家名  |
-| merchant_tel  | string   | 否       |返回商家电话|
-
-
-### GetRequirements接口
+### 2. GetRequirements接口(返回需求列表)
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -80,13 +58,114 @@ return JsonResponse({
 
 | 参数名称  | 参数类型  | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | --------|
-| requirements | list   | 是       | [需求id, 需求名] |
+| result   | string   | 是       | 返回结果 |
+| requirements | list | 是     | [需求id, 需求名] |
 
-- 返回示例
-```python
- return JsonResponse({
-        'requirement_id': requirements.requirement_id,
-        'requirement_name': requirements.requirement_name,
-        'requirement_value': requirement_value
-    })
-```
+
+### 3. PostOrderinfo接口 （生成订单）
+- 接口URL: 
+- 调用方式: POST
+- 参数格式:
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| username | string   | 是       | 用户名   |
+| phonenumber | Number   | 否       | 用户电话   |
+| requirement_id  | Number   | 是       | 需求id   |
+| requirement_name  | string   | 否      | 需求名   |
+
+- 响应格式
+
+| 参数名称  | 参数类型  | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | --------|
+| result    | string    | 是       | 返回生成订单结果 |
+
+
+### 4. GetOrdersId接口
+- 接口URL: 
+- 调用方式: GET
+- 参数格式:
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+|无         |         |           |         |
+
+- 响应格式
+
+| 参数名称  | 参数类型  | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | --------|
+| result    | string    | 是       | 返回结果success |
+| OrdersId | list  | 是 |所有未处于完成状态的订单|
+
+
+### 5. OrderIdToInfo接口
+- 接口URL: 
+- 调用方式: GET
+- 参数格式:
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+|OrderId    | Number        |     是      |      订单号   |
+
+- 响应格式
+
+| 参数名称  | 参数类型  | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | --------|
+| result    | string    | 是       | 返回结果success |
+| Username | stirng  | 是 |用户名|
+| phonenumber | Number   | 是    | 用户电话   |
+|requirement|string|是|需求名称|
+|UserAddress|string |是|用户地址|
+|city|list|是|[citycode, cityname]|
+
+
+### 6. CityToDistrict接口
+- 接口URL: 
+- 调用方式: GET
+- 参数格式:
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+|citycode    | Number        |     是      |      地级市编号   |
+
+- 响应格式
+
+| 参数名称  | 参数类型  | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | --------|
+| result    | string    | 是       | 返回结果success |
+|district| list | 是| 所属地级市的区编号，区名|
+
+
+### 7. DistrictToMerchant接口
+- 接口URL: 
+- 调用方式: GET
+- 参数格式:
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+|districtcode    | Number        |     是      |      区编号   |
+
+- 响应格式
+
+| 参数名称  | 参数类型  | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | --------|
+| result    | string    | 是       | 返回结果success |
+|merchants_list| list | 是| 所属区的商家id，店名|
+
+### 8. MerchantNameToTel接口
+- 接口URL: 
+- 调用方式: GET
+- 参数格式:
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+|merchant_id    | Number        |     是      |      商家id   |
+
+- 响应格式
+
+| 参数名称  | 参数类型  | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | --------|
+| result    | string    | 是       | 返回结果success |
+|merchant_phonenumber| string | 是| 商家电话|
+
+
