@@ -6,8 +6,8 @@ class Order_table(models.Model):
     merchant_id = models.IntegerField(verbose_name='商家ID') # 商家ID
     order_create_time = models.DateTimeField(verbose_name='订单创建时间')
     order_complete_time = models.DateTimeField(verbose_name='订单完成时间')
-    order_type_number = models.IntegerField(verbose_name='订单类型编号')
-    order_status = models.IntegerField(verbose_name='订单状态') # 1:进行中 2:已完成 
+    order_type_number = models.IntegerField(verbose_name='需求ID')
+    order_status = models.IntegerField(verbose_name='订单状态') # 1:预订单 2:进行中 3:已完成 
     order_desc = models.CharField(max_length=255, verbose_name='订单描述')
     
     def __str__(self):

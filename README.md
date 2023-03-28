@@ -1,4 +1,7 @@
 # Website
+http://123.57.187.239:8000/admin/
+用户名：yueyuea 密码：yueyuea
+
 
 ## 接口说明
 ### 登录接口
@@ -81,7 +84,7 @@ return JsonResponse({
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
-| ordernumber | string   | 是       | 订单号  |
+| username | string   | 是       |用户名  |
 | phonenumber | Number   | 否       | 用户电话   |
 | requirement_id  | Number   | 是       | 需求id   |
 
@@ -91,6 +94,11 @@ return JsonResponse({
 | -------- | -------- | -------- | --------|
 | result    | string    | 是       | 返回生成订单结果 |
 
+```python
+  return JsonResponse({
+        'result':"success"
+    })
+```
 
 ### 4. GetOrdersId接口
 - 接口URL: 

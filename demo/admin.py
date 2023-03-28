@@ -15,7 +15,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['user_id', 'user_name','user_tel', 'user_age', 'user_address', 'user_birthday', 'user_id_card', 'user_urgency']
+    list_display = ['user_id', 'user_name','user_tel', 'user_age', 'user_address', 'user_address_code','user_birthday', 'user_id_card', 'user_urgency']
 
 
 class MerchantAdmin(admin.ModelAdmin):
