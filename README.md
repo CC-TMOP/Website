@@ -179,6 +179,7 @@ return JsonResponse({
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 |districtcode    | Number        |     是      |      区编号   |
+|MsgBasicDemandID  | string | 是    | 需求大类id   |
 
 - 响应格式
 
@@ -249,3 +250,106 @@ return JsonResponse({
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 | Order_list  | list   | 是       | 订单列表 |
+
+### 11. SearchOrderInfo接口
+
+- 接口 URL:未定义
+- 调用方式: Get
+- 参数格式:
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|OrderId      | Number | 是    | 订单号   |
+|Username     | string | 是    | 用户名   |
+|MsgDemandID  | string | 是    | 需求id   |
+|Merchant_id  | Number | 是    | 商家id   |
+|Order_status | int    | 是    | 订单状态  |
+|Order_create_time | datetime | 是    | 创建时间  |
+|Order_completion_time | datetime | 是    | 结束时间  |
+|Order_desc | string | 是    | 订单评价  |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| Order_list  | list   | 是       | 订单列表 |
+
+### 12. UpdateMerchant接口
+
+- 接口 URL:未定义
+- 调用方式: Get
+- 参数格式:
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|OrderId      | Number | 是    | 订单号   |
+|Merchant_id  | Number | 是    | 商家id   |
+|Order_status | int    | 是    | 订单状态为进行中  |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| result   | string   | 是      | 返回结果success |
+
+### 13. GetOrderAllInfo接口
+
+- 接口 URL:未定义
+- 调用方式: Get
+- 参数格式:
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|OrderId      | Number | 是    | 订单号   |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+|OrderId      | Number | 是    | 订单号   |
+|Username     | string | 是    | 用户名   |
+|Requirement  |string  |是     |需求名称  |
+|Useraddress  |string  |是     |用户地址  |
+|Merchant_name|string  | 是    | 商家名   |
+|Merchant_phonenumber| string | 是| 商家电话|
+|Order_create_time | datetime | 是    | 创建时间  |
+|Order_completion_time | datetime | 是    | 结束时间  |
+|Order_status | int    | 是    | 订单状态  |
+|Order_price |double    | 是    | 订单金额  |
+|Order_desc | string | 是    | 订单评价  |
+
+### 14. UpdateOrderPrice接口
+
+- 接口 URL:未定义
+- 调用方式: Get
+- 参数格式:
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|OrderId      | Number | 是    | 订单号   |
+|MsgDemandID  | string | 是    | 需求id   |
+|Pay_type     | int    | 是    | 结算类型  |
+|Order_status | int    | 是    | 订单状态为已完成  |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| result   | string   | 是      | 返回结果success |
+
+### 15. UpdateOrderDesc接口
+
+- 接口 URL:未定义
+- 调用方式: Get
+- 参数格式:
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|OrderId      | Number | 是    | 订单号   |
+|Order_desc   | string | 是    | 订单评价  |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| result   | string   | 是      | 返回结果success |
