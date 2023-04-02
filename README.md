@@ -309,8 +309,10 @@ return JsonResponse({
 |OrderId      | Number | 是    | 订单号   |
 |Username     | string | 是    | 用户名   |
 |Requirement  |string  |是     |需求名称  |
+|MsgDemandID  | string | 是    | 需求id   |
 |Useraddress  |string  |是     |用户地址  |
 |Merchant_name|string  | 是    | 商家名   |
+|Merchant_id  | Number | 是    | 商家id   |
 |Merchant_phonenumber| string | 是| 商家电话|
 |Order_create_time | datetime | 是    | 创建时间  |
 |Order_completion_time | datetime | 是    | 结束时间  |
