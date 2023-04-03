@@ -259,7 +259,7 @@ return JsonResponse({
 })
 ```
 
-### 11. SearchOrderInfo接口
+### 11. SearchOrderInfo接口【未定】
 
 - 接口 URL:未定义
 - 调用方式: Get
@@ -275,11 +275,12 @@ return JsonResponse({
 | -------- | -------- | -------- | -------- |
 | Order_list  | list   | 是       | 订单列表 |
 
-### 12. UpdateMerchant接口
+### 12. UpdateMerchant接口【更新订单记录的接口】
 
 - 接口 URL:未定义
 - 调用方式: Get
 - 参数格式:
+- 接口说明：前端发送订单号，商家id，订单状态，后端将商家id，订单状态更新到数据库的该订单记录中
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
@@ -293,11 +294,12 @@ return JsonResponse({
 | -------- | -------- | -------- | -------- |
 | result   | string   | 是      | 返回结果success |
 
-### 13. GetOrderAllInfo接口
+### 13. GetOrderAllInfo接口【返回订单信息的接口】
 
 - 接口 URL:未定义
 - 调用方式: Get
 - 参数格式:
+- 接口说明：前端发送订单号，后端将该订单号的所有订单信息返回给前端
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
@@ -321,7 +323,7 @@ return JsonResponse({
 |Order_price |double    | 是    | 订单金额  |
 |Order_desc | string | 是    | 订单评价  |
 
-### 14. UpdateOrderPrice接口
+### 14. UpdateOrderPrice接口【未定，涉及到扣款操作】
 
 - 接口 URL:未定义
 - 调用方式: Get
@@ -340,11 +342,12 @@ return JsonResponse({
 | -------- | -------- | -------- | -------- |
 | result   | string   | 是      | 返回结果success |
 
-### 15. UpdateOrderDesc接口
+### 15. UpdateOrderDesc接口【更新订单记录的接口】
 
 - 接口 URL:未定义
 - 调用方式: Get
 - 参数格式:
+- 接口说明：前端发送订单号，订单评价，后端将订单评价更新到数据库中
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
