@@ -273,6 +273,7 @@ return JsonResponse({
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
+| result   | string   | 是       | 返回结果 |
 | Order_list  | list   | 是       | 订单列表 |
 
 ### 12. UpdateMerchant接口【更新订单记录的接口】
@@ -309,6 +310,7 @@ return JsonResponse({
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
+| result   | string   | 是       | 返回结果 |
 |Username     | string | 否    | 用户名   |
 |Requirement  |string  |否     |需求名称  |
 |MsgDemandID  | string | 否    | 需求id   |
