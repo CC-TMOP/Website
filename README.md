@@ -309,19 +309,18 @@ return JsonResponse({
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
-|OrderId      | Number | 是    | 订单号   |
-|Username     | string | 是    | 用户名   |
-|Requirement  |string  |是     |需求名称  |
-|MsgDemandID  | string | 是    | 需求id   |
-|Useraddress  |string  |是     |用户地址  |
-|Merchant_name|string  | 是    | 商家名   |
-|Merchant_id  | Number | 是    | 商家id   |
-|Merchant_phonenumber| string | 是| 商家电话|
-|Order_create_time | datetime | 是    | 创建时间  |
-|Order_completion_time | datetime | 是    | 结束时间  |
-|Order_status | int    | 是    | 订单状态  |
-|Order_price |double    | 是    | 订单金额  |
-|Order_desc | string | 是    | 订单评价  |
+|Username     | string | 否    | 用户名   |
+|Requirement  |string  |否     |需求名称  |
+|MsgDemandID  | string | 否    | 需求id   |
+|Useraddress  |string  |否     |用户地址  |
+|Merchant_name|string  | 否    | 商家名   |
+|Merchant_id  | Number | 否    | 商家id   |
+|Merchant_phonenumber| string | 否| 商家电话|
+|Order_create_time | datetime | 否    | 创建时间  |
+|Order_completion_time | datetime | 否    | 结束时间  |
+|Order_status | int    | 否    | 订单状态  |
+|Order_price |double    | 否    | 订单金额  |
+|Order_desc | string | 否    | 订单评价  |
 
 ### 14. UpdateOrderPrice接口【未定，涉及到扣款操作】
 
