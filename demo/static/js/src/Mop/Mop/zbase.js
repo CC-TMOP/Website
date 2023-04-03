@@ -31,7 +31,7 @@ class Mop {
                         <div class="icon">
                             <img src="../static/image/merchant_system/merchant-menu-order.png">
                         </div>
-                        <div class="title">订单管理</div>
+                        <div class="title">订单创建</div>
                     </a>
                 </li>
                 <li>
@@ -39,7 +39,7 @@ class Mop {
                         <div class="icon">
                             <img src="../static/image/merchant_system/merchant-menu-commodity.png">
                         </div>
-                        <div class="title">商品管理</div>
+                        <div class="title">填充订单</div>
                     </a>
                 </li>
                 <li>
@@ -280,6 +280,7 @@ $.get("", function (data) {
         this.$menu_order_content_1 = this.$Mop.find(".menu_order_content_1");
         // this.$submit-btn = this.$Mop.find("");
         this.root.$demoapp.append(this.$Mop);
+        this.item1;
         this.start();
     }
     start() {
@@ -297,8 +298,9 @@ $.get("", function (data) {
         this.$merchant_system_menu_order.click(function(){
             console.log("click");
             outer.$index_content.hide();
-            outer.$menu_order_content.show();
+            // outer.$menu_order_content.show();
             outer.$menu_order_content_2.hide();
+            outer.root.Order_create.$Order_Create.show();
         })
     }
 

@@ -17,6 +17,19 @@ def PostOrderinfo(request):
     })
 
 
+def PostRobotOrderinfo(request):
+    user_id = request.GET.get('user_id')
+    requirement_id = request.GET.get('requirement_id')
+
+    user = User_table.objects.filter(user_id=user_id)
+
+    # 生成订单号
+    getOrderNumber(user.user_tel,requirement_id)
+
+    return JsonResponse({
+        'result':"success"
+    })
+
 
 def getOrderNumber(user_tel, requirement_id):
     DateTime = str("{}".format(time.strftime('%y%m%d%H%M%S',time.localtime())))

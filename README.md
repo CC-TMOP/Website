@@ -123,7 +123,7 @@ return JsonResponse({
 })
 ```
 
-### 5. OrderIdToInfo接口
+### 5. GetOrderIdToInfo接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -150,8 +150,9 @@ return JsonResponse({
     'phonenumber':user.user_tel,
     'requirement':order.order_type_number,
     'useraddress':user.user_address,
-    'city':user.user_address
+    'city':city_code
 })
+
 ```
 
 ### 6. CityToDistrict接口
@@ -211,7 +212,7 @@ return JsonResponse({
 })
 ```
 
-### 9. 机器人订单号接口
+### 9. getRobotOrderNumber接口
 
 - 接口 URL:未定义
 - 调用方式: Post
@@ -251,6 +252,13 @@ return JsonResponse({
 | -------- | -------- | -------- | -------- |
 | Order_list  | list   | 是       | 订单列表 |
 
+```python
+return JsonResponse({
+    'result':"success",
+    'OrddersId':orders
+})
+```
+
 ### 11. SearchOrderInfo接口
 
 - 接口 URL:未定义
@@ -259,14 +267,7 @@ return JsonResponse({
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|OrderId      | Number | 是    | 订单号   |
-|Username     | string | 是    | 用户名   |
-|MsgDemandID  | string | 是    | 需求id   |
 |Merchant_id  | Number | 是    | 商家id   |
-|Order_status | int    | 是    | 订单状态  |
-|Order_create_time | datetime | 是    | 创建时间  |
-|Order_completion_time | datetime | 是    | 结束时间  |
-|Order_desc | string | 是    | 订单评价  |
 
 - 响应格式
 

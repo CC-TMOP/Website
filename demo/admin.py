@@ -11,15 +11,15 @@ from demo.models.worker.worker import Worker_table
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['order_number','merchant_id','user_id','order_create_time','order_complete_time','order_type_number','order_status','order_desc']
+    list_display = ['order_number','merchant_id','user_id','order_create_time','order_complete_time','order_type_number','order_status','order_price','order_comment']
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['user_id', 'user_name','user_tel', 'user_age', 'user_address', 'user_address_code','user_birthday', 'user_id_card', 'user_urgency']
+    list_display = ['user_id', 'user_name','user_tel', 'user_age', 'user_address', 'user_address_code','user_address_code','user_birthday', 'user_id_card', 'user_urgency']
 
 
 class MerchantAdmin(admin.ModelAdmin):
-    list_display = ['merchant_id','merchant_name','merchant_tel','merchant_password','merchant_address','merchant_status',"service_type","block"]
+    list_display = ['merchant_id','merchant_name','merchant_tel','merchant_password','merchant_address','merchant_address_code','merchant_status',"service_type","block"]
 
 class RequirementAdmin(admin.ModelAdmin):
     list_display = ['requirement_id','requirement_name','requirement_value']

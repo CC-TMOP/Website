@@ -4,6 +4,7 @@ export class Mainapp {
         this.$demoapp = $('#' + id);
         this.mop = new Mop(this);
         this.ajax = new Ajax(this);
+        this.item1 = new Order_Create(this.mop);
         this.start();
     }
 
