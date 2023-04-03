@@ -250,6 +250,7 @@ return JsonResponse({
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
+| result   | string   | 是       | 返回结果 |
 | Order_list  | list   | 是       | 订单列表 |
 
 ```python
