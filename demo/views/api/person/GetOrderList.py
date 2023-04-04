@@ -3,7 +3,7 @@ from demo.models.order.order_table import Order_table
 
 UnFinished = 1
 
-def GETOrderId(request):
+def GETOrderList(request):
     order_status = request.GET.get('Order_status')
    
     order = Order_table.objects.filter(order_status=order_status)
