@@ -1,7 +1,7 @@
 from django.urls import path, include
-from demo.views.api.getArea import *
-from demo.views.api.login import signin
-from demo.views.api.register import register
+from demo.views.api.template.getArea import *
+from demo.views.api.template.login import signin
+from demo.views.api.template.register import register
 from demo.views.api.match_service import matchService
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path("login/",signin,name="login"),
     path("register/",register,name="register"),
     path("match/",matchService,name="matchService"),
+    
 ]

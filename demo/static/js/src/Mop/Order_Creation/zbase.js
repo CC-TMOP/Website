@@ -2,15 +2,6 @@ class Order_Create {
     constructor(mop) {
         this.mop = mop;
         this.$Order_Create = $(`
-<div class="circle-container">
-    <div class="circle active">1</div>
-    <div>—————</div>
-    <div class="circle">2</div>
-    <div>—————</div>
-    <div class="circle">3</div>
-    <div>—————</div>
-    <div class="circle">4</div>
-</div>
 <div class="menu_order_content_1">
     <h1 class="menu_order_content_h1">订单创建</h1>
     <table style="margin: 0 auto; border-collapse: separate; border-spacing: 5px 10px;">
@@ -53,8 +44,7 @@ class Order_Create {
                 <td>
                     <input type="reset">
                 </td>
-            </tr>
-            <button id="submit-btn">提交</button>
+            </tr>       
         </tbody>
     </table>
 </div>

@@ -25,5 +25,38 @@ class Ajax {
         });
     }
 
+    GetOrderList(Order_status) {
+        let outer = this;
+        $.ajax({
+            url:"",
+            type:"GET",
+            data:{
+                Order_status:Order_status,
+            },
+            success:function(resp) {
+                if(resp.result==="success") {
+                    outer.root.item3.orders = resp.OrddersId;
+                }
+            }
+        });
+    }
+
+    GetOrderIdToInfo(OrderId) {
+        let outer = this;
+        $.ajax({
+            url:"",
+            type:"GET",
+            data:{
+                OrderId:OrderId,
+            },
+            success:function(resp) {
+                if(resp.result==="success") {
+                    outer.root.mop.hide_item();
+                    outer.root.item2.$Fill_Order.show();
+                    outer.root.mop.$menu_order_content.show();
+                }
+            }
+        });
+    }
     
 }

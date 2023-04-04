@@ -34,7 +34,7 @@ class Mop {
                         <div class="title">订单创建</div>
                     </a>
                 </li>
-                <li>
+                <li class="merchant_system_order_fill">
                     <a href="#">
                         <div class="icon">
                             <img src="../static/image/merchant_system/merchant-menu-commodity.png">
@@ -42,12 +42,12 @@ class Mop {
                         <div class="title">填充订单</div>
                     </a>
                 </li>
-                <li>
+                <li class="merchant_system_order_list">
                     <a href="#">
                         <div class="icon">
                             <img src="../static/image/merchant_system/merchant-menu-customer.png">
                         </div>
-                        <div class="title">顾客管理</div>
+                        <div class="title">订单列表</div>
                     </a>
                 </li>
                 <li>
@@ -113,153 +113,10 @@ class Mop {
             </div>
         </div>
         <div class="menu_order_content" style="align-content: center;">
-            <div class="circle-container">
-                <div class="circle active">1</div>
-                <div>—————</div>
-                <div class="circle">2</div>
-                <div>—————</div>
-                <div class="circle">3</div>
-                <div>—————</div>
-                <div class="circle">4</div>
-            </div>
-            <div class="menu_order_content_1">
-                <h1 class="menu_order_content_h1">订单创建</h1>
-                <table style="margin: 0 auto; border-collapse: separate; border-spacing: 5px 10px;">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <label>用户名:</label>
-                            </td>
-                            <td>
-                                <input id="usernameFromTel"class="menu_order_content_username_Input" type="text" placeholder="用户名" readonly="readonly">
-                            </td>
-                        </tr>
-                        <br>
-                        <br>
-                        <tr>
-                            <td>
-                                <label>电话:</label>
-                            </td>
-                            <td>
-                                <input id="telToUsername" class="menu_order_content_phonenumber_Input" type="text" placeholder="输入电话" onfocus="this.placeholder=''" onblur="this.placeholder='输入电话'">
-                            </td>
-                        </tr>
-                        <br>
-                        <br>
-                        <tr>
-                            <td>
-                                <label>需求:</label>
-                            </td>
-                            <td>
-                                <select name="requirement" id="requirement">
-                                    <option value="">请选择服务</option>
-                                    <option value="1">送餐</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="submit">
-                            </td>
-                            <td>
-                                <input type="reset">
-                            </td>
-                        </tr>
-                        <button id="submit-btn">提交</button>
-                    </tbody>
-                </table>
-            </div>
-            <div class="menu_order_content_2">
-                <h1 class="menu_order_content_h1">订单内容填充</h1>
-                <table style="margin: 0 auto; border-collapse: separate; border-spacing: 5px 10px;">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <label>订单号:</label>
-                            </td>
-                            <td>
-                                <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="订单号" readonly="readonly">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>用户名:</label>
-                            </td>
-                            <td>
-                                <input id="usernameFromTel"class="menu_order_content_username_Input" type="text" placeholder="用户名" readonly="readonly">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>电话:</label>
-                            </td>
-                            <td>
-                                <input id="telToUsername" class="menu_order_content_phonenumber_Input" type="text" placeholder="电话" readonly="readonly">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>需求:</label>
-                            </td>
-                            <td>
-                                <input id="requirement_readonly" class="requirement_readonly" type="text" placeholder="需求" readonly="readonly">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>用户地址:</label>
-                            </td>
-                            <td>
-                                <input id="user_address" class="user_address" type="text" placeholder="用户地址" readonly="readonly">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>商家:</label>
-                            </td>
-                            <td>
-                                <select name="merchant" id="merchant">
-                                    <option value="">-------</option>
-                                    <option value="1">xx餐馆</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>商家联系电话:</label>
-                            </td>
-                            <td>
-                                <input id="Business_telephone_numberr" class="Business_telephone_numberr" type="text" placeholder="商家联系电话" readonly="readonly">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button class="submit-btn" id="submit-btn">提交</button>
-                            </td>
-                            <td>
-                                <input type="reset">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
         </div>
     </div>
 </div>
-<script>
-const circles = document.querySelectorAll('.circle');
-const submitBtn = document.querySelector('#submit-btn');
-let activeCircleIndex = 0;
-submitBtn.addEventListener('click', () => {
-    console.log("circles clicked");
-    // 取消当前圆圈的填充色
-    circles[activeCircleIndex].classList.remove('active');
-    // 计算下一个圆圈的索引
-    activeCircleIndex = (activeCircleIndex + 1) % circles.length;
-    // 填充下一个圆圈的颜色
-    circles[activeCircleIndex].classList.add('active');
-  });
-</script>
 <script>
 $.get("", function (data) {
     for(var i = 0; i < data.requirements.length; i++){
@@ -271,14 +128,13 @@ $.get("", function (data) {
 });
 </script>
         `);
-        this.$merchant_system_menu_order = this.$Mop.find(".merchant_system_menu_order");
+        this.$merchant_system_order_create = this.$Mop.find(".merchant_system_menu_order");
+        this.$merchant_system_order_fill = this.$Mop.find(".merchant_system_order_fill");
+        this.$merchant_system_order_list = this.$Mop.find(".merchant_system_order_list");
         this.$index_content = this.$Mop.find(".content");
         this.$menu_order_content = this.$Mop.find(".menu_order_content");
         this.$phonenumber_Input = this.$Mop.find(".menu_order_content_phonenumber_Input");
         this.$menu_order_content.hide();
-        this.$menu_order_content_2 = this.$Mop.find(".menu_order_content_2");
-        this.$menu_order_content_1 = this.$Mop.find(".menu_order_content_1");
-        // this.$submit-btn = this.$Mop.find("");
         this.root.$demoapp.append(this.$Mop);
         this.item1;
         this.start();
@@ -288,19 +144,39 @@ $.get("", function (data) {
     }
     add_listening_events() {
         let outer = this;
-        this.add_listening_events_menu_order(); // 订单管理button提交事件
+        this.listening_merchant_system_order_create(); // 订单创建button提交事件
+        this.listening_merchant_system_order_fill(); // 订单填充
+        this.listening_merchant_system_order_list(); // 订单列表
         this.add_listening_events_phone_number();
     }
 
-    add_listening_events_menu_order() {
-        console.log("menu_order");
+    listening_merchant_system_order_create() {
         let outer = this;
-        this.$merchant_system_menu_order.click(function(){
-            console.log("click");
-            outer.$index_content.hide();
-            // outer.$menu_order_content.show();
-            outer.$menu_order_content_2.hide();
-            outer.root.Order_create.$Order_Create.show();
+        this.$merchant_system_order_create.click(function(){
+            outer.hide_item();
+            outer.root.item1.$Order_Create.show();
+            outer.$menu_order_content.show();
+        })
+    }
+
+    listening_merchant_system_order_fill() {
+        let outer = this;
+        this.$merchant_system_order_fill.click(function() {
+            outer.hide_item();
+            outer.root.item2.$Fill_Order.show();
+            outer.$menu_order_content.show();
+        })
+    }
+
+    listening_merchant_system_order_list() {
+        let outer = this;
+        this.$merchant_system_order_list.click(function(){
+            // outer.root.ajax.GetOrderList(1);
+            outer.root.item3.orders = ["1", "2", "3"];
+            outer.root.item3.updateTable();
+            outer.hide_item();
+            outer.root.item3.$Order_List.show();
+            outer.$menu_order_content.show();
         })
     }
 
@@ -314,5 +190,11 @@ $.get("", function (data) {
         })
     }
 
+    hide_item() {
+        this.$index_content.hide();
+        this.root.item1.$Order_Create.hide();
+        this.root.item2.$Fill_Order.hide();
+        this.root.item3.$Order_List.hide();
+    }
 
 }
