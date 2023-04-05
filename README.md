@@ -5,39 +5,28 @@ http://123.57.187.239:8000/admin/
 ```
 Using the URLconf defined in Website.urls, Django tried these URL patterns, in this order:
 
+admin/
+[name='index']
 merchant/area [name='area']
-
 merchant/ [name='merchant']
-
 api/ getProvince/ [name='getProvince']
-
 api/ getCity/ [name='getCity']
-
 api/ getDistrict/ [name='getDistrict']
-
 api/ login/ [name='login']
-
 api/ register/ [name='register']
-
 api/ match/ [name='matchService']
-
 api/person/ getMerchantNameToTel/ [name='GetMerchantNameToTel']
-
 api/person/ getOrderId/ [name='GETOrderId']
-
 api/person/ getOrderIdToInfo/ [name='GetOrderIdToInfo']
-
 api/person/ getOrderList/ [name='GETOrderList']
-
 api/person/ getRequirements/ [name='GetRequirements']
-
 api/person/ getTelToUserName/ [name='GetTelToUserName']
-
 api/person/ getUserInfo/ [name='GetUserInfo']
-
 api/person/ postOrderinfo/ [name='PostOrderinfo']
-
 api/person/ getOrderNumber/ [name='getOrderNumber']
+api/person/ postMerchantToOrder/ [name='PostMerchantToOrder']
+api/person/ getOrderAllInfo/ [name='GetOrderAllInfo']
+api/person/ postMerchantToOrder/ [name='PostMerchantToOrder']
 ```
 
 ## 接口说明
