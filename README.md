@@ -313,7 +313,7 @@ return JsonResponse({
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|order_id      | Number | 是    | 订单号   |
+|order_number      | Number | 是    | 订单号   |
 |merchant_id | Number | 是    | 商家id   |
 |order_status | int    | 是    | 订单状态为进行中  |
 

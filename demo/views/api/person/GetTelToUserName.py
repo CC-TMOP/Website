@@ -8,7 +8,7 @@ def GetTelToUserName(request):
 
     return JsonResponse({
         'result':"success",
-        'merchant_phonenumber': user.user_name
+        'user_name': user.user_name,
     })
 
 
