@@ -3,6 +3,43 @@ http://123.57.187.239:8000/admin/
 用户名：yueyuea 密码：yueyuea
 
 
+Using the URLconf defined in Website.urls, Django tried these URL patterns, in this order:
+
+merchant/area [name='area']
+
+merchant/ [name='merchant']
+
+api/ getProvince/ [name='getProvince']
+
+api/ getCity/ [name='getCity']
+
+api/ getDistrict/ [name='getDistrict']
+
+api/ login/ [name='login']
+
+api/ register/ [name='register']
+
+api/ match/ [name='matchService']
+
+api/person/ getMerchantNameToTel/ [name='GetMerchantNameToTel']
+
+api/person/ getOrderId/ [name='GETOrderId']
+
+api/person/ getOrderIdToInfo/ [name='GetOrderIdToInfo']
+
+api/person/ getOrderList/ [name='GETOrderList']
+
+api/person/ getRequirements/ [name='GetRequirements']
+
+api/person/ getTelToUserName/ [name='GetTelToUserName']
+
+api/person/ getUserInfo/ [name='GetUserInfo']
+
+api/person/ postOrderinfo/ [name='PostOrderinfo']
+
+api/person/ getOrderNumber/ [name='getOrderNumber']
+
+
 ## 接口说明
 ### 登录接口
 - 接口URL: http://123.57.187.239:8000/api/login/
@@ -278,24 +315,30 @@ return JsonResponse({
 | result   | string   | 是       | 返回结果 |
 | Order_list  | list   | 是       | 订单列表 |
 
-### 12. UpdateMerchant接口【更新订单记录的接口】
+### 12. PostMerchantToOrder接口【更新订单记录的接口】
 
 - 接口 URL:未定义
-- 调用方式: Get
+- 调用方式: POST
 - 参数格式:
 - 接口说明：前端发送订单号，商家id，订单状态，后端将商家id，订单状态更新到数据库的该订单记录中
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|OrderId      | Number | 是    | 订单号   |
-|Merchant_id  | Number | 是    | 商家id   |
-|Order_status | int    | 是    | 订单状态为进行中  |
+|order_id      | Number | 是    | 订单号   |
+|merchant_id | Number | 是    | 商家id   |
+|order_status | int    | 是    | 订单状态为进行中  |
 
 - 响应格式
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 | result   | string   | 是      | 返回结果success |
+
+```python
+return JsonResponse({
+    'result':"success"
+})
+```
 
 ### 13. GetOrderAllInfo接口【返回订单信息的接口】
 

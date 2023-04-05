@@ -44,7 +44,7 @@ def getOrderNumber(user_tel, requirement_id):
         order_number = order_num,
         user_id = user.user_id,
         order_create_time=dateTime,
-        order_type_number=requirement_id
+        order_type_number=requirement_id,
         order_status = 1, # 创建新订单
     )
     order_info.save()

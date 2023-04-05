@@ -7,7 +7,7 @@ def GetTelToUserName(request):
     user = User_table.objects.filter(user_tel=user_tel)
 
     return JsonResponse({
-        'result':"success"
+        'result':"success",
         'merchant_phonenumber': user.user_name
     })
 
