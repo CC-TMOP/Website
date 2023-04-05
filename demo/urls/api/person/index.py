@@ -8,6 +8,9 @@ from demo.views.api.person.GetTelToUserName import GetTelToUserName
 from demo.views.api.person.GetUserInfo import GetUserInfo
 from demo.views.api.person.PostOrderinfo import PostOrderinfo
 from demo.views.api.person.GetOrderNumber import getOrderNumber
+from demo.views.api.person.PostMerchantToOrder import PostMerchantToOrder
+from demo.views.api.person.GetOrderAllInfo import GetOrderAllInfo
+from demo.views.api.person.PostMerchantToOrder import PostMerchantToOrder
 
 urlpatterns = [
     path("getMerchantNameToTel/",GetMerchantNameToTel,name="GetMerchantNameToTel"),
@@ -19,4 +22,7 @@ urlpatterns = [
     path("getUserInfo/",GetUserInfo,name="GetUserInfo"),
     path("postOrderinfo/",PostOrderinfo,name="PostOrderinfo"),
     path("getOrderNumber/",getOrderNumber,name="getOrderNumber"),
+    path("postMerchantToOrder/",PostMerchantToOrder,name="PostMerchantToOrder"),
+    path("getOrderAllInfo/",GetOrderAllInfo,name="GetOrderAllInfo"),
+    path("postMerchantToOrder/",PostMerchantToOrder,name="PostMerchantToOrder"),
 ]

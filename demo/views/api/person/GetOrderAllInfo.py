@@ -1,19 +1,31 @@
 from django.http import JsonResponse
 from demo.models.merchant.merchant import Merchant_table
 from demo.models.order.order_table import Order_table
-from demo.models.
+from demo.models.user.user_table import User_table
+from demo.models.requirement.requirement import Requirement
 
-def PostMerchantToOrder(request):
+def GetOrderAllInfo(request):
     order_id = request.GET.get('order_id')
   
     order = Order_table.objects.filter(order_status=UnFinished)
-    user = 
-    orders = []
-    for i in order:
-        orders.append([i.order_number])
+    user = User_table.object.filter(user_id = order.user_id)
+    merchant = Merchant_table.object.filter(merchant_id = order.merchant_id)
+    requirement = Requirement.object.filter(requirement_id = order.order_type_number)
 
     return JsonResponse({
-        'result':"success"
+        'result':"success",
+        'user_name':user.user_name,
+        'requirement_name':requirement.requirement_name,
+        'requirement_id':requirement.requirement_id,
+        'user_address':user.user_address,
+        'merchant_name':merchant.merchant_address,
+        'merchant_id':merchant.merchant_id,
+        'merchant_tel':merchant.merchant_tel,
+        'order_create_time':order.order_create_time,
+        'order_completion_timee':order.order_completion_time,
+        'order_status':order.order_status,
+        'order_price':order.order_price,
+        'order_desc':order.order_desc,
     })
 
 
