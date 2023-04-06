@@ -198,7 +198,7 @@ return JsonResponse({
 |district| list | 是| 所属地级市的区编号，区名|
 
 
-### 7. DistrictToMerchant接口
+### 7. DistrictToMerchant接口【要改】
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -206,7 +206,7 @@ return JsonResponse({
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 |districtcode    | Number        |     是      |      区编号   |
-|MsgBasicDemandID  | string | 是    | 需求大类id   |
+|OrderId    | Number        |     是      |      订单号   |
 
 - 响应格式
 
@@ -262,7 +262,7 @@ return JsonResponse({
  })
 ```
 
-### 10. GetOrderList接口
+### 10. GetOrderList接口【要改】
 
 - 接口 URL:未定义
 - 调用方式: Get
@@ -277,7 +277,7 @@ return JsonResponse({
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 | result   | string   | 是       | 返回结果 |
-| Order_list  | list   | 是       | 订单列表 |
+| Order_list  | list   | 是       | 订单具体信息列表 |
 
 ```python
 return JsonResponse({
