@@ -266,7 +266,8 @@ return JsonResponse({
 
 - 接口 URL:未定义
 - 调用方式: Get
-- 参数格式:
+- 参数格式: 
+- 接口说明：前端发送订单状态，后端返回该状态下的所有订单记录具体信息列表
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
@@ -277,7 +278,7 @@ return JsonResponse({
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 | result   | string   | 是       | 返回结果 |
-| Order_list  | list   | 是       | 订单具体信息列表 |
+| Order_list  | list   | 是       | 订单具体信息列表[订单号,用户名，需求名，商家id，订单状态，创建时间，结束时间，订单评价] |
 
 ```python
 return JsonResponse({
@@ -315,7 +316,7 @@ return JsonResponse({
 | ----------- | -------- | -------- | -------- |
 |order_number      | Number | 是    | 订单号   |
 |merchant_id | Number | 是    | 商家id   |
-|order_status | int    | 是    | 订单状态为进行中  |
+|order_status | int    | 是    | 订单状态  |
 
 - 响应格式
 
@@ -376,7 +377,7 @@ return JsonResponse({
 })
 ```
 
-### 14. UpdateOrderPrice接口【未定，涉及到扣款操作】
+### 14. UpdateOrderPrice接口【要写】
 
 - 接口 URL:未定义
 - 调用方式: Get
