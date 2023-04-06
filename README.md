@@ -385,16 +385,22 @@ return JsonResponse({
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|OrderId      | Number | 是    | 订单号   |
-|MsgDemandID  | string | 是    | 需求id   |
-|Pay_type     | int    | 是    | 结算类型  |
-|Order_status | int    | 是    | 订单状态为已完成  |
+|order_number      | Number | 是    | 订单号   |
+|requirement_id  | string | 是    | 需求id   |
+|order_pay_type     | int    | 是    | 结算类型  |
+|order_status | int    | 是    | 订单状态为已完成  |
 
 - 响应格式
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 | result   | string   | 是      | 返回结果success |
+
+```python
+return JsonResponse({
+    'result':"success"
+})
+```
 
 ### 15. PostDescToOrder接口【更新订单记录的接口】
 

@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from demo.models.order.order_table import Order_table
 
-UnFinished = 1
 
 def GETOrderList(request):
     order_status = request.GET.get('Order_status')
