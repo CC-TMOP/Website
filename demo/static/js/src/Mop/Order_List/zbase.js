@@ -4,6 +4,7 @@ class Order_List {
         this.orders = [];
         this.$Order_List = $(`
 <div class="menu_order_content_3">
+    <h1 class="menu_order_content_h1">订单列表</h1>
     <table id="order-table">
         <tbody>
 

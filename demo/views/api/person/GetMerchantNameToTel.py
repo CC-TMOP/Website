@@ -7,7 +7,7 @@ def GetMerchantNameToTel(request):
     merchant = Merchant_table.objects.filter(merchant_id=merchant_id)
 
     return JsonResponse({
-        'result':"success"
+        'result':"success",
         'merchant_phonenumber': merchant.merchant_tel
     })
 

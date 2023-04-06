@@ -8,4 +8,5 @@ urlpatterns = [
     path("merchant/area",area,name="area"),
     path("merchant/",merchant,name="merchant"),
     path("api/",include("demo.urls.api.index")),
+    
 ]

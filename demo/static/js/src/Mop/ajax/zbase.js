@@ -28,7 +28,7 @@ class Ajax {
     GetOrderList(Order_status) {
         let outer = this;
         $.ajax({
-            url:"",
+            url:"http://172.23.149.93:8000/api/person/getOrderIdToInfo/",
             type:"GET",
             data:{
                 Order_status:Order_status,

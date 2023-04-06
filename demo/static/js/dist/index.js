@@ -342,6 +342,7 @@ $.get("", function (data) {
         this.orders = [];
         this.$Order_List = $(`
 <div class="menu_order_content_3">
+    <h1 class="menu_order_content_h1">订单列表</h1>
     <table id="order-table">
         <tbody>
 
@@ -369,9 +370,10 @@ $.get("", function (data) {
             cell.textContent = order;
             row.appendChild(cell);
             cell.addEventListener("click", () => {
-                outer.mop.hide_item();
-                outer.mop.root.item2.$Fill_Order.show();
-                outer.mop.$menu_order_content.show();
+                outer.mop.root.ajax.GetOrderIdToInfo(order);
+                // outer.mop.hide_item();
+                // outer.mop.root.item2.$Fill_Order.show();
+                // outer.mop.$menu_order_content.show();
             });
             tableBody.appendChild(row);
         });
@@ -406,7 +408,7 @@ $.get("", function (data) {
     GetOrderList(Order_status) {
         let outer = this;
         $.ajax({
-            url:"",
+            url:"http://172.23.149.93:8000/api/person/getOrderIdToInfo/",
             type:"GET",
             data:{
                 Order_status:Order_status,
@@ -419,6 +421,23 @@ $.get("", function (data) {
         });
     }
 
+    GetOrderIdToInfo(OrderId) {
+        let outer = this;
+        $.ajax({
+            url:"",
+            type:"GET",
+            data:{
+                OrderId:OrderId,
+            },
+            success:function(resp) {
+                if(resp.result==="success") {
+                    outer.root.mop.hide_item();
+                    outer.root.item2.$Fill_Order.show();
+                    outer.root.mop.$menu_order_content.show();
+                }
+            }
+        });
+    }
     
 }export class Mainapp {
     constructor(id) {
