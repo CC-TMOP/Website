@@ -15,8 +15,6 @@ def GetUserInfo(request):
     return JsonResponse({
         'user_name': user.user_name,
         'user.address':user.user_address,
-        'merchant_name':merchant.merchant_name,
-        'merchant_tel':merchant.merchant_tel,
         'result':"success"
     })
 

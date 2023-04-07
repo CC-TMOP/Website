@@ -4,9 +4,9 @@ from demo.models.user.user_table import User_table
 
 
 def GetOrderIdToInfo(request):
-    order_number = request.GET.get('OrderId')
+    order_id = request.GET.get('OrderId')
    
-    order = Order_table.objects.filter(order_number=order_number)
+    order = Order_table.objects.filter(order_id=order_id)
     user = User_table.objects.filter(user_id=order.user_id)
     
     city_code = str(user.user_address_code)[6:]

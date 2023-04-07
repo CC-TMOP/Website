@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Order_table',
             fields=[
-                ('order_number', models.AutoField(primary_key=True, serialize=False, verbose_name='订单编号')),
+                ('order_id', models.AutoField(primary_key=True, serialize=False, verbose_name='订单编号')),
                 ('user_id', models.IntegerField(verbose_name='用户ID')),
                 ('merchant_id', models.IntegerField(verbose_name='商家ID')),
                 ('order_create_time', models.DateTimeField(verbose_name='订单创建时间')),

@@ -16,7 +16,7 @@ def getOrderNumber(request):
 
     # 生成订单号
     order_info=Order_table(
-        order_number = order_num,
+        order_id = order_num,
         user_id = user.user_id,
         order_status = 1, # 创建新订单
     )
@@ -39,7 +39,7 @@ def getRobotOrderNumber(request):
 
     # 生成订单号
     order_info=Order_table(
-        order_number = order_num,
+        order_id = order_num,
         user_id = user.user_id,
         order_status = 1, # 创建新订单
     )

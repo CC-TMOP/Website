@@ -14,4 +14,4 @@ class Order_table(models.Model):
     order_pay_type = models.IntegerField(verbose_name='结算类型',null=True) # 1:现金 2:账户
 
    #  def __str__(self):
-   #  return "订单编号：%s 商家id:%s 买家id:%s"%(self.order_number, self.merchant_id)
+   #  return "订单编号：%s 商家id:%s 买家id:%s"%(self.order_id, self.merchant_id)

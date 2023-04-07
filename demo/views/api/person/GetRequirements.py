@@ -1,11 +1,11 @@
 from django.http import JsonResponse
-from demo.models.requirement.requirement_table import Requirement
+from demo.models.requirement.requirement_table import Requirement_table
 
 # GET /api/requirements
 
 def GetRequirements(request):
     # 获得所有需求
-    requirements = Requirement.objects.filter()
+    requirements = Requirement_table.objects.filter()
 
     requirements_list = []
     for i in requirements:
