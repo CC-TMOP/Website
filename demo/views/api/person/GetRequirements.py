@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from demo.models.requirement.requirement import Requirement
+from demo.models.requirement.requirement_table import Requirement
 
 # GET /api/requirements
 

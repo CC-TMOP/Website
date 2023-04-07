@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from demo.models.merchant.merchant import Merchant_table
+from demo.models.merchant.merchant_table import Merchant_table
 from django.db.models import Q
 
 def matchService(request):

@@ -1,8 +1,8 @@
 from django.http import JsonResponse
-from demo.models.merchant.merchant import Merchant_table
+from demo.models.merchant.merchant_table import Merchant_table
 from demo.models.order.order_table import Order_table
 from demo.models.user.user_table import User_table
-from demo.models.requirement.requirement import Requirement
+from demo.models.requirement.requirement_table import Requirement
 
 def GetOrderAllInfo(request):
     order_number = request.GET.get('order_number')

@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
-from demo.models.merchant.merchant import Merchant_table
+from demo.models.merchant.merchant_table import Merchant_table
 from django.db.models import F
 import random
 import hashlib
