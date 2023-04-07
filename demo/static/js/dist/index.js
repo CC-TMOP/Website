@@ -14,7 +14,7 @@ class Fill_Order {
                     <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="订单号" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="username">
                 <td>
                     <label>用户名:</label>
                 </td>
@@ -22,7 +22,7 @@ class Fill_Order {
                     <input id="usernameFromTel"class="menu_order_content_username_Input" type="text" placeholder="用户名" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="phonenumber">
                 <td>
                     <label>电话:</label>
                 </td>
@@ -30,7 +30,7 @@ class Fill_Order {
                     <input id="telToUsername" class="menu_order_content_phonenumber_Input" type="text" placeholder="电话" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="requirement">
                 <td>
                     <label>需求:</label>
                 </td>
@@ -38,7 +38,7 @@ class Fill_Order {
                     <input id="requirement_readonly" class="requirement_readonly" type="text" placeholder="需求" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="useraddress">
                 <td>
                     <label>用户地址:</label>
                 </td>
@@ -134,12 +134,12 @@ class Fill_Order {
                         <div class="title">订单列表</div>
                     </a>
                 </li>
-                <li>
+                <li class="merchant_system_track_status">
                     <a href="#">
                         <div class="icon">
                             <img src="../static/image/merchant_system/merchant-menu-finance.png">
                         </div>
-                        <div class="title">财务管理</div>
+                        <div class="title">订单状态追踪</div>
                     </a>
                 </li>
                 <li>
@@ -215,9 +215,11 @@ $.get("", function (data) {
         this.$merchant_system_order_create = this.$Mop.find(".merchant_system_menu_order");
         this.$merchant_system_order_fill = this.$Mop.find(".merchant_system_order_fill");
         this.$merchant_system_order_list = this.$Mop.find(".merchant_system_order_list");
+        this.$merchant_system_track_status = this.$Mop.find(".merchant_system_track_status");
         this.$index_content = this.$Mop.find(".content");
         this.$menu_order_content = this.$Mop.find(".menu_order_content");
         this.$phonenumber_Input = this.$Mop.find(".menu_order_content_phonenumber_Input");
+
         this.$menu_order_content.hide();
         this.root.$demoapp.append(this.$Mop);
         this.item1;
@@ -231,6 +233,7 @@ $.get("", function (data) {
         this.listening_merchant_system_order_create(); // 订单创建button提交事件
         this.listening_merchant_system_order_fill(); // 订单填充
         this.listening_merchant_system_order_list(); // 订单列表
+        this.listening_merchant_system_track_status(); // 订单状态追踪
         this.add_listening_events_phone_number();
     }
 
@@ -252,16 +255,26 @@ $.get("", function (data) {
         })
     }
 
-    listening_merchant_system_order_list() {
+    listening_merchant_system_order_list() { 
         let outer = this;
         this.$merchant_system_order_list.click(function(){
-            // outer.root.ajax.GetOrderList(1);
-            outer.root.item3.orders = ["1", "2", "3"];
+            outer.root.ajax.GetOrderList(1);
+            // outer.root.item3.orders = ["1", "2", "3"];
             outer.root.item3.updateTable();
             outer.hide_item();
             outer.root.item3.$Order_List.show();
             outer.$menu_order_content.show();
         })
+    }
+
+    listening_merchant_system_track_status() {
+        let outer = this;
+        this.$merchant_system_track_status.click(function(){
+            outer.hide_item();
+            outer.root.item4.$Track_Status.show();
+            outer.$menu_order_content.show();
+        })
+        
     }
 
     add_listening_events_phone_number() { // 电话框取消选中后转后端
@@ -279,6 +292,7 @@ $.get("", function (data) {
         this.root.item1.$Order_Create.hide();
         this.root.item2.$Fill_Order.hide();
         this.root.item3.$Order_List.hide();
+        this.root.item4.$Track_Status.hide();
     }
 
 }class Order_Create {
@@ -316,7 +330,6 @@ $.get("", function (data) {
                 <td>
                     <select name="requirement" id="requirement">
                         <option value="">请选择服务</option>
-                        <option value="1">送餐</option>
                     </select>
                 </td>
             </tr>
@@ -335,6 +348,16 @@ $.get("", function (data) {
         this.$Order_Create.hide();
         
         this.mop.$menu_order_content.append(this.$Order_Create);
+
+        this.start();
+    }
+
+    start() {
+        this.appendRequirements();
+    }
+
+    appendRequirements() {
+        this.mop.root.ajax.GetRequirements();
     }
 }class Order_List {
     constructor(mop) {
@@ -345,7 +368,9 @@ $.get("", function (data) {
     <h1 class="menu_order_content_h1">订单列表</h1>
     <table id="order-table">
         <tbody>
-
+            <tr>
+                <td></td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -378,6 +403,114 @@ $.get("", function (data) {
             tableBody.appendChild(row);
         });
     }
+}class Track_Status {
+    constructor(mop) {
+        this.mop = mop;
+        this.$Track_Status = $(`
+<div class="menu_order_content_4">
+    <h1 class="menu_order_content_h1">订单状态追踪</h1>
+    <table style="margin: 0 auto; border-collapse: separate; border-spacing: 5px 10px;">
+        <tbody>
+            <tr>
+                <td>
+                    <label>订单号:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="订单号" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>用户名:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="用户名" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>电话号:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="电话号" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>需求:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="需求" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>用户地址:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="用户地址" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>商家:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="商家" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>商家联系方式:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="商家联系方式" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>创建时间:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="创建时间" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>状态:</label>
+                </td>
+                <td>
+                    <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="状态" readonly="readonly">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>结算方式:</label>
+                </td>
+                <td>
+                    <select name="merchant" id="merchant">
+                        <option value="">-------</option>
+                        <option value="1">现金</option>
+                        <option value="2">账户余额</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="submit-btn" id="submit-btn">订单完成</button>
+                </td>
+                <td>
+                    <button class="submit-btn" id="submit-btn">订单修改</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+`);
+        this.$Track_Status.hide();
+        
+        this.mop.$menu_order_content.append(this.$Track_Status);
+    }
 }class Ajax {
     constructor(root) {
         this.root = root;
@@ -405,13 +538,30 @@ $.get("", function (data) {
         });
     }
 
-    GetOrderList(Order_status) {
+    GetRequirements() {
         let outer = this;
         $.ajax({
-            url:"http://172.23.149.93:8000/api/person/getOrderIdToInfo/",
+            url:"http://123.57.187.239:8000/api/person/getRequirements/",
+            type:"GET",
+            data:{},
+            success:function(resp) {
+                if(resp.result==="success") {
+                    for(var i = 0;i < resp.requirements.length; i++){
+                        let $new = $("<option value="+resp.requirements[i][0]+">"+resp.requirements[i][1]+"</option>");
+                        $("#requirement").append($new);
+                    }
+                }
+            }
+        });
+    }
+
+    GetOrderList(order_status) {
+        let outer = this;
+        $.ajax({
+            url:"http://123.57.187.239:8000/api/person/getOrderList/",
             type:"GET",
             data:{
-                Order_status:Order_status,
+                order_status:order_status,
             },
             success:function(resp) {
                 if(resp.result==="success") {
@@ -431,6 +581,9 @@ $.get("", function (data) {
             },
             success:function(resp) {
                 if(resp.result==="success") {
+                    var input = $('table tr[data-id="username"] input[type="text"]');
+                    input.val(resp.username);
+                    
                     outer.root.mop.hide_item();
                     outer.root.item2.$Fill_Order.show();
                     outer.root.mop.$menu_order_content.show();
@@ -448,6 +601,7 @@ $.get("", function (data) {
         this.item1 = new Order_Create(this.mop);
         this.item2 = new Fill_Order(this.mop);
         this.item3 = new Order_List(this.mop);
+        this.item4 = new Track_Status(this.mop);
         this.start();
     }
 

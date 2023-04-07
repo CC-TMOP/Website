@@ -50,12 +50,12 @@ class Mop {
                         <div class="title">订单列表</div>
                     </a>
                 </li>
-                <li>
+                <li class="merchant_system_track_status">
                     <a href="#">
                         <div class="icon">
                             <img src="../static/image/merchant_system/merchant-menu-finance.png">
                         </div>
-                        <div class="title">财务管理</div>
+                        <div class="title">订单状态追踪</div>
                     </a>
                 </li>
                 <li>
@@ -131,9 +131,11 @@ $.get("", function (data) {
         this.$merchant_system_order_create = this.$Mop.find(".merchant_system_menu_order");
         this.$merchant_system_order_fill = this.$Mop.find(".merchant_system_order_fill");
         this.$merchant_system_order_list = this.$Mop.find(".merchant_system_order_list");
+        this.$merchant_system_track_status = this.$Mop.find(".merchant_system_track_status");
         this.$index_content = this.$Mop.find(".content");
         this.$menu_order_content = this.$Mop.find(".menu_order_content");
         this.$phonenumber_Input = this.$Mop.find(".menu_order_content_phonenumber_Input");
+
         this.$menu_order_content.hide();
         this.root.$demoapp.append(this.$Mop);
         this.item1;
@@ -147,6 +149,7 @@ $.get("", function (data) {
         this.listening_merchant_system_order_create(); // 订单创建button提交事件
         this.listening_merchant_system_order_fill(); // 订单填充
         this.listening_merchant_system_order_list(); // 订单列表
+        this.listening_merchant_system_track_status(); // 订单状态追踪
         this.add_listening_events_phone_number();
     }
 
@@ -168,16 +171,26 @@ $.get("", function (data) {
         })
     }
 
-    listening_merchant_system_order_list() {
+    listening_merchant_system_order_list() { 
         let outer = this;
         this.$merchant_system_order_list.click(function(){
-            // outer.root.ajax.GetOrderList(1);
-            outer.root.item3.orders = ["1", "2", "3"];
+            outer.root.ajax.GetOrderList(1);
+            // outer.root.item3.orders = ["1", "2", "3"];
             outer.root.item3.updateTable();
             outer.hide_item();
             outer.root.item3.$Order_List.show();
             outer.$menu_order_content.show();
         })
+    }
+
+    listening_merchant_system_track_status() {
+        let outer = this;
+        this.$merchant_system_track_status.click(function(){
+            outer.hide_item();
+            outer.root.item4.$Track_Status.show();
+            outer.$menu_order_content.show();
+        })
+        
     }
 
     add_listening_events_phone_number() { // 电话框取消选中后转后端
@@ -195,6 +208,7 @@ $.get("", function (data) {
         this.root.item1.$Order_Create.hide();
         this.root.item2.$Fill_Order.hide();
         this.root.item3.$Order_List.hide();
+        this.root.item4.$Track_Status.hide();
     }
 
 }

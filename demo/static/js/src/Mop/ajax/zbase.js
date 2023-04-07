@@ -25,13 +25,30 @@ class Ajax {
         });
     }
 
-    GetOrderList(Order_status) {
+    GetRequirements() {
         let outer = this;
         $.ajax({
-            url:"http://172.23.149.93:8000/api/person/getOrderIdToInfo/",
+            url:"http://123.57.187.239:8000/api/person/getRequirements/",
+            type:"GET",
+            data:{},
+            success:function(resp) {
+                if(resp.result==="success") {
+                    for(var i = 0;i < resp.requirements.length; i++){
+                        let $new = $("<option value="+resp.requirements[i][0]+">"+resp.requirements[i][1]+"</option>");
+                        $("#requirement").append($new);
+                    }
+                }
+            }
+        });
+    }
+
+    GetOrderList(order_status) {
+        let outer = this;
+        $.ajax({
+            url:"http://123.57.187.239:8000/api/person/getOrderList/",
             type:"GET",
             data:{
-                Order_status:Order_status,
+                order_status:order_status,
             },
             success:function(resp) {
                 if(resp.result==="success") {
@@ -51,6 +68,9 @@ class Ajax {
             },
             success:function(resp) {
                 if(resp.result==="success") {
+                    var input = $('table tr[data-id="username"] input[type="text"]');
+                    input.val(resp.username);
+                    
                     outer.root.mop.hide_item();
                     outer.root.item2.$Fill_Order.show();
                     outer.root.mop.$menu_order_content.show();

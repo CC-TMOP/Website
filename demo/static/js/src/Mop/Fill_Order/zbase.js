@@ -14,7 +14,7 @@ class Fill_Order {
                     <input id="orderIdFromUser" class="menu_order_content_orderid_Input" type="text" placeholder="订单号" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="username">
                 <td>
                     <label>用户名:</label>
                 </td>
@@ -22,7 +22,7 @@ class Fill_Order {
                     <input id="usernameFromTel"class="menu_order_content_username_Input" type="text" placeholder="用户名" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="phonenumber">
                 <td>
                     <label>电话:</label>
                 </td>
@@ -30,7 +30,7 @@ class Fill_Order {
                     <input id="telToUsername" class="menu_order_content_phonenumber_Input" type="text" placeholder="电话" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="requirement">
                 <td>
                     <label>需求:</label>
                 </td>
@@ -38,7 +38,7 @@ class Fill_Order {
                     <input id="requirement_readonly" class="requirement_readonly" type="text" placeholder="需求" readonly="readonly">
                 </td>
             </tr>
-            <tr>
+            <tr data-id="useraddress">
                 <td>
                     <label>用户地址:</label>
                 </td>

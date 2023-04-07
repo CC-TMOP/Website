@@ -3,17 +3,15 @@ from demo.models.order.order_table import Order_table
 
 
 def GETOrderList(request):
-    order_status = request.GET.get('Order_status')
-   
+    order_status = request.GET.get('order_status')
+
     order = Order_table.objects.filter(order_status=order_status)
 
-    orders = []
-    for i in order:
-        orders.append([i.order_number])
+    order_ids = [o.order_number for o in order]
 
     return JsonResponse({
         'result':"success",
-        'OrddersId':orders
+        'OrddersId':order_ids
     })
 
 

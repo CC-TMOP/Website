@@ -33,7 +33,6 @@ class Order_Create {
                 <td>
                     <select name="requirement" id="requirement">
                         <option value="">请选择服务</option>
-                        <option value="1">送餐</option>
                     </select>
                 </td>
             </tr>
@@ -52,5 +51,15 @@ class Order_Create {
         this.$Order_Create.hide();
         
         this.mop.$menu_order_content.append(this.$Order_Create);
+
+        this.start();
+    }
+
+    start() {
+        this.appendRequirements();
+    }
+
+    appendRequirements() {
+        this.mop.root.ajax.GetRequirements();
     }
 }

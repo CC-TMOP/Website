@@ -7,7 +7,9 @@ class Order_List {
     <h1 class="menu_order_content_h1">订单列表</h1>
     <table id="order-table">
         <tbody>
-
+            <tr>
+                <td>订单号</td>
+            </tr>
         </tbody>
     </table>
 </div>

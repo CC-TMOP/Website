@@ -7,6 +7,7 @@ export class Mainapp {
         this.item1 = new Order_Create(this.mop);
         this.item2 = new Fill_Order(this.mop);
         this.item3 = new Order_List(this.mop);
+        this.item4 = new Track_Status(this.mop);
         this.start();
     }
 

@@ -12,5 +12,5 @@ class Order_table(models.Model):
     order_comment = models.CharField(max_length=255, verbose_name='订单评论')
     order_pay_type = models.IntegerField(verbose_name='结算类型')
 
-    def __str__(self):
-        return "订单编号：%s 商家id:%s 买家id:%s"%(self.order_number, self.merchant_uid, self.buyer_id)
+   #  def __str__(self):
+   #  return "订单编号：%s 商家id:%s 买家id:%s"%(self.order_number, self.merchant_id)
