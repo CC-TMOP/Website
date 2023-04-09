@@ -7,11 +7,11 @@ def GETOrderList(request):
 
     order = Order_table.objects.filter(order_status=order_status)
 
-    order_ids = [o.order_id for o in order]
+    order_numbers = [o.order_number for o in order]
 
     return JsonResponse({
         'result':"success",
-        'OrddersId':order_ids
+        'OrddersId':order_numbers
     })
 
 

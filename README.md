@@ -314,7 +314,7 @@ return JsonResponse({
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|order_id      | Number | 是    | 订单号   |
+|order_number      | Number | 是    | 订单号   |
 |merchant_id | Number | 是    | 商家id   |
 |order_status | int    | 是    | 订单状态  |
 
@@ -386,7 +386,7 @@ return JsonResponse({
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|order_id      | Number | 是    | 订单号   |
+|order_number      | Number | 是    | 订单号   |
 |requirement_id  | string | 是    | 需求id   |
 |order_pay_type     | int    | 是    | 结算类型  |
 |order_status | int    | 是    | 订单状态为已完成  |
@@ -412,7 +412,7 @@ return JsonResponse({
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|Order_Id      | Number | 是    | 订单号   |
+|order_number      | Number | 是    | 订单号   |
 |Order_desc   | string | 是    | 订单评价  |
 
 - 响应格式

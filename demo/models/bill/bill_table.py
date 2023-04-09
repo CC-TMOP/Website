@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Bill_table(models.Model):
     bill_id = models.IntegerField(primary_key=True, verbose_name='账单ID')
-    order_id = models.CharField(max_length=25,verbose_name='订单ID',null=True)
+    order_number = models.CharField(max_length=25,verbose_name='订单ID',null=True)
     account_id = models.IntegerField(verbose_name='账户ID')
     bill_type = models.IntegerField(verbose_name='账单类别') # 1:支出 2:入账
     bill_time = models.DateTimeField(verbose_name='账单时间')

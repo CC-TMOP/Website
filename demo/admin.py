@@ -1,5 +1,4 @@
 from django.contrib import admin
-from demo.models.account.account_table import Account_table
 from demo.models.area.district import District
 from demo.models.area.city import City
 from demo.models.area.province import Province
@@ -17,20 +16,17 @@ from demo.models.worker.worker_table import Worker_table
 from demo.models.worker_type.worker_type_table import Worker_type_table
 
 
-class AccountAdmin(admin.ModelAdmin):
-    list_display = ['account_id','user_id','account_password','account_balance']
-
 class Basic_requirementAdmin(admin.ModelAdmin):
     list_display = ['basic_requirement_id','basic_requirement_name']
 
 class BillAdmin(admin.ModelAdmin):
-    list_display = ['bill_id','order_id','account_id','bill_type','bill_time','bill_money','bill_remark']
+    list_display = ['bill_id','order_number','account_id','bill_type','bill_time','bill_money','bill_remark']
 
 class MerchantAdmin(admin.ModelAdmin):
     list_display = ['merchant_id','merchant_password','merchant_name','merchant_tel','merchant_address','merchant_address_code','merchant_status','service_type','block','merchant_assistant_name','merchant_assistant_tel','merchant_remark']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['order_id','user_id','merchant_id','order_create_time','order_complete_time','order_type_number','order_status','order_price','order_comment','order_pay_type']
+    list_display = ['order_number','user_id','merchant_id','order_create_time','order_complete_time','order_type_number','order_status','order_price','order_comment','order_pay_type']
 
 class RequirementAdmin(admin.ModelAdmin):
     list_display = ['requirement_id','requirement_name','requirement_value']
@@ -71,7 +67,6 @@ class StreetAdmin(admin.ModelAdmin):
 
 # Register your models here.
 
-admin.site.register(Account_table, AccountAdmin)
 admin.site.register(Basic_requirement_table,Basic_requirementAdmin)
 admin.site.register(Bill_table,BillAdmin)
 admin.site.register(Merchant_table,MerchantAdmin)

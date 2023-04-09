@@ -8,7 +8,7 @@ def GETOrderId(request):
    
     orders = []
     for i in order:
-        orders.append([i.order_id])
+        orders.append([i.order_number])
 
     return JsonResponse({
         'result':"success",

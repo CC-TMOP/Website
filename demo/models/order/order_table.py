@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Order_table(models.Model):
-    order_id = models.CharField(primary_key=True,max_length=25,verbose_name='订单ID')
+    order_number = models.CharField(primary_key=True,max_length=25,verbose_name='订单ID')
     user_id = models.CharField(max_length=25,verbose_name='用户ID')
     merchant_id = models.IntegerField(verbose_name='商家ID',null=True)
     order_create_time = models.DateTimeField(verbose_name='订单创建时间')
@@ -14,4 +14,4 @@ class Order_table(models.Model):
     order_pay_type = models.IntegerField(verbose_name='结算类型',null=True) # 1:现金 2:账户
 
    #  def __str__(self):
-   #  return "订单编号：%s 商家id:%s 买家id:%s"%(self.order_id, self.merchant_id)
+   #  return "订单编号：%s 商家id:%s 买家id:%s"%(self.order_number, self.merchant_id)
