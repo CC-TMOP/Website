@@ -72,12 +72,12 @@ return JsonResponse({
 | 参数名称  | 参数类型  | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | --------|
 | result   | string   | 是       | 返回结果 |
-| username | string   | 否       |返回用户名|
+| user_name | string   | 否       |返回用户名|
 
 ```python
 return JsonResponse({
         'result':"success"
-        'merchant_user_tel': user.user_name
+        'user_name': user.user_name
     })
 ```
 

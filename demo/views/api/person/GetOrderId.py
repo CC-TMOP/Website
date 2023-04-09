@@ -6,13 +6,11 @@ UnFinished = 1
 def GetOrderId(request):
     order = Order_table.objects.filter(order_status=UnFinished)
    
-    orders = []
-    for i in order:
-        orders.append([i.order_number])
+    order_numbers = [o.order_number for o in order]
 
     return JsonResponse({
         'result':"success",
-        'OrddersId':orders
+        'OrddersId':order_numbers
     })
 
 

@@ -134,7 +134,7 @@ $.get("", function (data) {
         this.$merchant_system_track_status = this.$Mop.find(".merchant_system_track_status");
         this.$index_content = this.$Mop.find(".content");
         this.$menu_order_content = this.$Mop.find(".menu_order_content");
-        this.$phonenumber_Input = this.$Mop.find(".menu_order_content_phonenumber_Input");
+        
 
         this.$menu_order_content.hide();
         this.root.$demoapp.append(this.$Mop);
@@ -150,7 +150,6 @@ $.get("", function (data) {
         this.listening_merchant_system_order_fill(); // 订单填充
         this.listening_merchant_system_order_list(); // 订单列表
         this.listening_merchant_system_track_status(); // 订单状态追踪
-        this.add_listening_events_phone_number();
     }
 
     listening_merchant_system_order_create() {
@@ -191,16 +190,6 @@ $.get("", function (data) {
             outer.$menu_order_content.show();
         })
         
-    }
-
-    add_listening_events_phone_number() { // 电话框取消选中后转后端
-        let outer = this;
-        this.$phonenumber_Input.change(function() {
-            if (!$(this).is(":checked")) {
-                console.log("电话框取消选中后转后端");
-                outer.root.ajax.telToUsername(document.getElementById("telToUsername").value);
-            }
-        })
     }
 
     hide_item() {

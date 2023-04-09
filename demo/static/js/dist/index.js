@@ -218,7 +218,7 @@ $.get("", function (data) {
         this.$merchant_system_track_status = this.$Mop.find(".merchant_system_track_status");
         this.$index_content = this.$Mop.find(".content");
         this.$menu_order_content = this.$Mop.find(".menu_order_content");
-        this.$phonenumber_Input = this.$Mop.find(".menu_order_content_phonenumber_Input");
+        
 
         this.$menu_order_content.hide();
         this.root.$demoapp.append(this.$Mop);
@@ -234,7 +234,6 @@ $.get("", function (data) {
         this.listening_merchant_system_order_fill(); // 订单填充
         this.listening_merchant_system_order_list(); // 订单列表
         this.listening_merchant_system_track_status(); // 订单状态追踪
-        this.add_listening_events_phone_number();
     }
 
     listening_merchant_system_order_create() {
@@ -275,16 +274,6 @@ $.get("", function (data) {
             outer.$menu_order_content.show();
         })
         
-    }
-
-    add_listening_events_phone_number() { // 电话框取消选中后转后端
-        let outer = this;
-        this.$phonenumber_Input.change(function() {
-            if (!$(this).is(":checked")) {
-                console.log("电话框取消选中后转后端");
-                outer.root.ajax.telToUsername(document.getElementById("telToUsername").value);
-            }
-        })
     }
 
     hide_item() {
@@ -346,7 +335,7 @@ $.get("", function (data) {
 </div>
 `);
         this.$Order_Create.hide();
-        
+        this.$phonenumber_Input = this.$Order_Create.find(".menu_order_content_phonenumber_Input");
         this.mop.$menu_order_content.append(this.$Order_Create);
 
         this.start();
@@ -354,10 +343,21 @@ $.get("", function (data) {
 
     start() {
         this.appendRequirements();
+        this.add_listening_events_phone_number();
     }
 
     appendRequirements() {
         this.mop.root.ajax.GetRequirements();
+    }
+
+    add_listening_events_phone_number() { // 电话框取消选中后转后端
+        let outer = this;
+        this.$phonenumber_Input.change(function() {
+            if (!$(this).is(":checked")) {
+                console.log("电话框取消选中后转后端");
+                outer.mop.root.ajax.telToUsername(document.getElementById("telToUsername").value);
+            }
+        })
     }
 }class Order_List {
     constructor(mop) {
@@ -369,7 +369,7 @@ $.get("", function (data) {
     <table id="order-table">
         <tbody>
             <tr>
-                <td></td>
+                <td>订单号</td>
             </tr>
         </tbody>
     </table>
@@ -524,15 +524,15 @@ $.get("", function (data) {
     telToUsername(phoneNumber) {
         let outer = this;
         $.ajax({
-            url:"",
+            url:"http://123.57.187.239:8000/api/person/getTelToUserName/",
             type:"GET",
             data:{
-                phoneNumber:phoneNumber,
+                user_tel:phoneNumber,
             },
             success:function(resp) {
                 if(resp.result==="success") {
-                    console.log("匹配到该电话号码对应的User");
-                    document.getElementById("usernameFromTel").value = resp.username;
+                    console.log(resp.user_name);
+                    document.getElementById("usernameFromTel").value = resp.user_name;
                 }
             }
         });

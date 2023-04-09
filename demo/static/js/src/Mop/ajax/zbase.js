@@ -11,15 +11,15 @@ class Ajax {
     telToUsername(phoneNumber) {
         let outer = this;
         $.ajax({
-            url:"",
+            url:"http://123.57.187.239:8000/api/person/getTelToUserName/",
             type:"GET",
             data:{
-                phoneNumber:phoneNumber,
+                user_tel:phoneNumber,
             },
             success:function(resp) {
                 if(resp.result==="success") {
-                    console.log("匹配到该电话号码对应的User");
-                    document.getElementById("usernameFromTel").value = resp.username;
+                    console.log(resp.user_name);
+                    document.getElementById("usernameFromTel").value = resp.user_name;
                 }
             }
         });

@@ -49,7 +49,7 @@ class Order_Create {
 </div>
 `);
         this.$Order_Create.hide();
-        
+        this.$phonenumber_Input = this.$Order_Create.find(".menu_order_content_phonenumber_Input");
         this.mop.$menu_order_content.append(this.$Order_Create);
 
         this.start();
@@ -57,9 +57,20 @@ class Order_Create {
 
     start() {
         this.appendRequirements();
+        this.add_listening_events_phone_number();
     }
 
     appendRequirements() {
         this.mop.root.ajax.GetRequirements();
+    }
+
+    add_listening_events_phone_number() { // 电话框取消选中后转后端
+        let outer = this;
+        this.$phonenumber_Input.change(function() {
+            if (!$(this).is(":checked")) {
+                console.log("电话框取消选中后转后端");
+                outer.mop.root.ajax.telToUsername(document.getElementById("telToUsername").value);
+            }
+        })
     }
 }
