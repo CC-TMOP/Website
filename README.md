@@ -58,7 +58,7 @@ return JsonResponse({
 })
 ```
 
-### 1. TelToUserName接口
+### 1. GetTelToUserName接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -127,7 +127,7 @@ return JsonResponse({
     })
 ```
 
-### 4. GetOrdersId接口
+### 4. GetOrderId接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -150,7 +150,7 @@ return JsonResponse({
 })
 ```
 
-### 5. Getorder_numberToInfo接口
+### 5. GetOrderIdToInfo接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
@@ -199,10 +199,11 @@ return JsonResponse({
 |district| list | 是| 所属地级市的区编号，区名|
 
 
-### 7. DistrictToMerchant接口【要改】
+### 7. DistrictToMerchant接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
+- 接口说明：前端发送区编号和订单号，后端根据订单号截取需求大类ID，然后查询该区编号下，符合该需求大类ID的商家
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
@@ -216,7 +217,7 @@ return JsonResponse({
 | result    | string    | 是       | 返回结果success |
 |merchants_list| list | 是| 所属区的商家id，店名|
 
-### 8. MerchantNameToTel接口
+### 8. GetMerchantNameToTel接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
