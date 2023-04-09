@@ -15,10 +15,11 @@ api/ getDistrict/ [name='getDistrict']
 api/ login/ [name='login']
 api/ register/ [name='register']
 api/ match/ [name='matchService']
+
 api/person/ getMerchantNameToTel/ [name='GetMerchantNameToTel']
-api/person/ getOrderId/ [name='GETOrderId']
-api/person/ getOrderIdToInfo/ [name='GetOrderIdToInfo']
-api/person/ getOrderList/ [name='GETOrderList']
+api/person/ getorder_number/ [name='Getorder_number']
+api/person/ getorder_numberToInfo/ [name='Getorder_numberToInfo']
+api/person/ getOrderList/ [name='GetOrderList']
 api/person/ getRequirements/ [name='GetRequirements']
 api/person/ getTelToUserName/ [name='GetTelToUserName']
 api/person/ getUserInfo/ [name='GetUserInfo']
@@ -64,7 +65,7 @@ return JsonResponse({
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
-| phonenumber | Number   | 是       | 用户电话号   |
+| user_tel | Number   | 是       | 用户电话号   |
 
 - 响应格式
 
@@ -76,7 +77,7 @@ return JsonResponse({
 ```python
 return JsonResponse({
         'result':"success"
-        'merchant_phonenumber': user.user_name
+        'merchant_user_tel': user.user_name
     })
 ```
 
@@ -111,7 +112,7 @@ return JsonResponse({
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 | username | string   | 是       |用户名  |
-| phonenumber | Number   | 否       | 用户电话   |
+| user_tel | Number   | 否       | 用户电话   |
 | requirement_id  | Number   | 是       | 需求id   |
 
 - 响应格式
@@ -149,14 +150,14 @@ return JsonResponse({
 })
 ```
 
-### 5. GetOrderIdToInfo接口
+### 5. Getorder_numberToInfo接口
 - 接口URL: 
 - 调用方式: GET
 - 参数格式:
 
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
-|OrderId    | Number        |     是      |      订单号   |
+|order_number    | Number        |     是      |      订单号   |
 
 - 响应格式
 
@@ -164,7 +165,7 @@ return JsonResponse({
 | -------- | -------- | -------- | --------|
 | result    | string    | 是       | 返回结果success |
 | username | stirng  | 是 |用户名|
-| phonenumber | Number   | 是    | 用户电话   |
+| user_tel | Number   | 是    | 用户电话   |
 |requirement|string|是|需求名称|
 |useraddress|string |是|用户地址|
 |city|list|是|[citycode, cityname]|   
@@ -173,7 +174,7 @@ return JsonResponse({
 return JsonResponse({
     'result':"success",
     'username':user.user_name,
-    'phonenumber':user.user_tel,
+    'user_tel':user.user_tel,
     'requirement':order.order_type_number,
     'useraddress':user.user_address,
     'city':city_code
@@ -206,7 +207,7 @@ return JsonResponse({
 | 参数名称 | 参数类型 | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | -------- |
 |districtcode    | Number        |     是      |      区编号   |
-|OrderId    | Number        |     是      |      订单号   |
+|order_number    | Number        |     是      |      订单号   |
 
 - 响应格式
 
@@ -229,12 +230,12 @@ return JsonResponse({
 | 参数名称  | 参数类型  | 是否必选 | 参数说明 |
 | -------- | -------- | -------- | --------|
 | result    | string    | 是       | 返回结果success |
-|merchant_phonenumber| string | 是| 商家电话|
+|merchant_user_tel| string | 是| 商家电话|
 
 ```python
 return JsonResponse({
     'result':"success"
-    'merchant_phonenumber': merchant_tel
+    'merchant_user_tel': merchant_tel
 })
 ```
 
@@ -339,7 +340,7 @@ return JsonResponse({
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
-|OrderId      | Number | 是    | 订单号   |
+|order_number      | Number | 是    | 订单号   |
 
 - 响应格式
 

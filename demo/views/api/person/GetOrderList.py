@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from demo.models.order.order_table import Order_table
 
 
-def GETOrderList(request):
+def GetOrderList(request):
     order_status = request.GET.get('order_status')
 
     order = Order_table.objects.filter(order_status=order_status)

@@ -6,13 +6,18 @@ def PostMerchantToOrder(request):
     order_number = request.GET.get('order_number')
     order_desc = request.GET.get('order_desc')
 
-    order = Order_table(order_number = order_number, order_desc = order_desc)
-    order.save()
-
-    return JsonResponse({
-        'result':"success"
-    })
-
+    result = Order_table.objects.filter(order_number=order_number).update(
+        order_desc = order_desc
+    )
+    
+    if(result==1):
+        return JsonResponse({
+            'result':"success"
+        })
+    else:
+        return JsonResponse({
+            'result':"failed"
+        }) 
 
 
 

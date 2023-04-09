@@ -4,11 +4,25 @@ from demo.models.user.user_table import User_table
 
 
 def GetOrderIdToInfo(request):
-    order_number = request.GET.get('OrderId')
+    order_number = request.GET.get('order_number')
    
-    order = Order_table.objects.filter(order_number=order_number).first()
-    user = User_table.objects.filter(user_id=order.user_id).first()
+    if order_number:
+        order = Order_table.objects.filter(order_number=order_number).first()
+        if order==[]:
+            return JsonResponse({
+                'result':"failed: order number is not exist",
+            })
+    else:  
+        return JsonResponse({
+            'result':"failed: order_number is null",
+        })
     
+    user = User_table.objects.filter(user_id=order.user_id).first()
+    if user.count() == 0:
+        return JsonResponse({
+            'result':"failed: user is not exist",
+        })
+
     city_code = str(user.user_address_code)[8:]
 
     return JsonResponse({

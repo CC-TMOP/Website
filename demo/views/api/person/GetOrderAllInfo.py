@@ -7,10 +7,10 @@ from demo.models.requirement.requirement_table import Requirement_table
 def GetOrderAllInfo(request):
     order_number = request.GET.get('order_number')
   
-    order = Order_table.objects.filter(order_number = order_number)
-    user = User_table.objects.filter(user_id = order.user_id)
-    merchant = Merchant_table.objects.filter(merchant_id = order.merchant_id)
-    requirement = Requirement_table.objects.filter(requirement_id = order.order_type_number)
+    order = Order_table.objects.filter(order_number = order_number).first()
+    user = User_table.objects.filter(user_id = order.user_id).first()
+    merchant = Merchant_table.objects.filter(merchant_id = order.merchant_id).first()
+    requirement = Requirement_table.objects.filter(requirement_id = order.order_type_number).first()
 
     return JsonResponse({
         'result':"success",

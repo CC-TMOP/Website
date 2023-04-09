@@ -1,8 +1,8 @@
 from django.urls import path, include
 from demo.views.api.person.GetMerchantNameToTel import GetMerchantNameToTel
-from demo.views.api.person.GetOrderId import GETOrderId
+from demo.views.api.person.GetOrderId import GetOrderId
 from demo.views.api.person.GetOrderIdToInfo import GetOrderIdToInfo
-from demo.views.api.person.GetOrderList import GETOrderList
+from demo.views.api.person.GetOrderList import GetOrderList
 from demo.views.api.person.GetRequirements import GetRequirements
 from demo.views.api.person.GetTelToUserName import GetTelToUserName
 from demo.views.api.person.GetUserInfo import GetUserInfo
@@ -14,9 +14,9 @@ from demo.views.api.person.PostMerchantToOrder import PostMerchantToOrder
 
 urlpatterns = [
     path("getMerchantNameToTel/",GetMerchantNameToTel,name="GetMerchantNameToTel"),
-    path("getOrderId/",GETOrderId,name="GETOrderId"),
+    path("getOrderId/",GetOrderId,name="GetOrderId"),
     path("getOrderIdToInfo/",GetOrderIdToInfo,name="GetOrderIdToInfo"),
-    path("getOrderList/",GETOrderList,name="GETOrderList"),
+    path("getOrderList/",GetOrderList,name="GetOrderList"),
     path("getRequirements/",GetRequirements,name="GetRequirements"),
     path("getTelToUserName/",GetTelToUserName,name="GetTelToUserName"),
     path("getUserInfo/",GetUserInfo,name="GetUserInfo"),

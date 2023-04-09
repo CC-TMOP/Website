@@ -13,7 +13,7 @@ def register(request):
     password = data.get("password")
     password_confirm = data.get("password_confirm")
     # print(username,'\n',password,'\n',password_confirm)
-    if not username or not password :
+    if not username or not password:
         return JsonResponse({
              'result':"用户名和密码不能为空"
         })

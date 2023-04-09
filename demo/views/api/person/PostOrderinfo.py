@@ -6,7 +6,7 @@ from demo.models.user.user_table import User_table
 
 def PostOrderinfo(request):
     user_name = request.GET.get('user_name')
-    user_tel = request.GET.get('phonenumber')
+    user_tel = request.GET.get('user_tel')
     requirement_id = request.GET.get('requirement_id')
 
     # 生成订单号
