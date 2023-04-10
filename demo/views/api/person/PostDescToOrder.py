@@ -6,9 +6,14 @@ def PostMerchantToOrder(request):
     order_number = request.GET.get('order_number')
     order_desc = request.GET.get('order_desc')
 
-    result = Order_table.objects.filter(order_number=order_number).update(
-        order_desc = order_desc
-    )
+    if order_number:
+        result = Order_table.objects.filter(order_number=order_number).update(
+            order_desc = order_desc
+        )
+    else:
+        return JsonResponse({
+            'result':"failed: order number is null"
+        })
     
     if(result==1):
         return JsonResponse({
