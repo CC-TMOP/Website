@@ -198,6 +198,13 @@ return JsonResponse({
 | result    | string    | 是       | 返回结果success |
 |district| list | 是| 所属地级市的区编号，区名|
 
+```python
+return JsonResponse({
+    'result': "success",
+    'districts': districts,
+})
+```
+
 
 ### 7. DistrictToMerchant接口
 - 接口URL: 
@@ -216,6 +223,13 @@ return JsonResponse({
 | -------- | -------- | -------- | --------|
 | result    | string    | 是       | 返回结果success |
 |merchants_list| list | 是| 所属区的商家id，店名|
+
+```python
+return JsonResponse({
+    'result': "success",
+    'districts': merchants,
+})
+```
 
 ### 8. GetMerchantNameToTel接口
 - 接口URL: 
