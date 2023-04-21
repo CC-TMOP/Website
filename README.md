@@ -442,3 +442,118 @@ return JsonResponse({
     'result':"success"
 })
 ```
+
+### 16. PostAddUserInfo接口【插入用户信息的接口】
+
+- 接口 URL:未定义
+- 调用方式: Post
+- 参数格式:
+- 接口说明：前端发送用户详细信息，后端根据信息创建用户ID，并把信息插入到数据库中
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|user_name    | string | 是    | 用户姓名 |
+|user_sex     | int | 是    | 用户性别  |
+|user_id_card | string | 是    | 用户身份证号   |
+|user_tel      | string | 是    | 用户电话 |
+|user_birthday | date | 是    | 用户生日  |
+|user_address_code | int | 是    | 地址ID |
+|user_age      | int | 是    | 用户年龄  |
+|user_remark   | string | 否    | 用户备注 |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| result   | string   | 是      | 返回结果success |
+
+### 17. PostAddMerchantInfo接口【插入商家信息的接口】
+
+- 接口 URL:未定义
+- 调用方式: Post
+- 参数格式:
+- 接口说明：前端发送商家详细信息，后端根据信息创建商家ID，并把信息插入到数据库中
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|merchant_name   | string | 是    | 商家名称 |
+|merchant_tel    | string | 是    | 商家电话  |
+|service_type    | int | 是    | 服务类型ID   |
+|merchant_address_code    | int | 是    | 地址ID |
+|merchant_status          | int | 是    | 商家状态  |
+|merchant_assistant_name  | string | 是    | 店员姓名 |
+|merchant_assistant_tel   | string | 是    | 店员电话  |
+|merchant_remark          | string | 否    | 商家备注 |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| result   | string   | 是      | 返回结果success |
+
+
+### 18. PostAddWorkerInfo接口【插入员工信息的接口】
+
+- 接口 URL:未定义
+- 调用方式: Post
+- 参数格式:
+- 接口说明：前端发送员工详细信息，后端根据员工ID，把信息插入到数据库中
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|worker_id     | string | 是    | 员工id  |
+|worker_name    | string | 是    | 员工姓名 |
+|worker_sex     | int | 是    | 员工性别  |
+|worker_id_card | string | 是    | 员工身份证号  |
+|worker_phone   | string | 是    | 员工电话 |
+|worker_birthday | date | 是    | 出生日期  |
+|worker_address_code | int | 是    | 地址ID  |
+|worker_email   | string | 是    | 员工邮箱 |
+|worker_age     | int | 是    | 员工年龄  |
+|worker_type_id | int | 是    | 员工类型ID |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| result   | string   | 是      | 返回结果success |
+
+- 员工类型【对照信息的时候用】
+
+| 员工类型ID    | 员工类型名 |
+| ----------- | -------- |
+| 11    | 订单传递工作人员 |
+| 12    | 订单对接工作人员 |
+| 13    | 订单跟踪工作人员 |
+| 14    | 订单反馈工作人员 |
+| 21    | 餐饮服务工作人员 |
+| 22    | 上门服务工作人员 |
+| 23    | 跑腿服务工作人员 |
+| 24    | 陪护服务工作人员 |
+| 25    | 定制服务工作人员 |
+| 31    | 监督流程工作人员 |
+| 32    | 监督服务工作人员 |
+| 41    | 对接合作方工作人员 |
+| 42    | 对接老人工作人员 |
+| 43    | 账号管理工作人员 |
+| 51    | 人工客服工作人员 |
+| 52    | 线下接待工作人员 |
+
+
+### 19. GetWorkerType接口【返回员工类型列表】
+
+- 接口 URL:未定义
+- 调用方式: Post
+- 参数格式:
+- 接口说明：后端发送员工类别列表给前端
+
+| 参数名称    | 参数类型 | 是否必选 | 参数说明 |
+| ----------- | -------- | -------- | -------- |
+|无    |    |     |    |
+
+- 响应格式
+
+| 参数名称 | 参数类型 | 是否必选 | 参数说明 |
+| -------- | -------- | -------- | -------- |
+| result   | string   | 是      | 返回结果success |
+| worker_type | list  | 是 |[worker_type_id,worker_type_name]|
