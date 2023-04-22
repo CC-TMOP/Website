@@ -6,7 +6,7 @@ class Fill_Order {
     <h1 class="menu_order_content_h1">订单内容填充</h1>
     <table style="margin: 0 auto; border-collapse: separate; border-spacing: 5px 10px;">
         <tbody>
-            <tr>
+            <tr data-id="orderid">
                 <td>
                     <label>订单号:</label>
                 </td>
@@ -53,7 +53,6 @@ class Fill_Order {
                 <td>
                     <select name="merchant" id="merchant">
                         <option value="">-------</option>
-                        <option value="1">xx餐馆</option>
                     </select>
                 </td>
             </tr>
@@ -79,7 +78,26 @@ class Fill_Order {
 `);
 
         this.$Fill_Order.hide();
-        
+        this.$merchant_Input = this.$Fill_Order.find(".merchant");
         this.mop.$menu_order_content.append(this.$Fill_Order);
+        this.start();
+    }
+
+    start() {
+        this.add_listening_events_merchant();
+    }
+
+    add_listening_events_merchant() { // 商家取消选中后转后端
+        let outer = this;
+        $(" #merchant").change(function() {
+            // var options = $("#merchant");
+            // var value = options.val();   //拿到选中项的值
+            // var text = options.text(); 
+            var myselect = document.getElementById("merchant");
+            var index=myselect.selectedIndex ;
+            console.log(myselect.options[index].value);
+            console.log(myselect.options[index].text);
+            outer.mop.root.ajax.MerchantToTel(myselect.options[index].value);
+        })
     }
 }

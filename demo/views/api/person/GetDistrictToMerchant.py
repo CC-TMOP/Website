@@ -18,7 +18,7 @@ def GetDistrictToMerchant(request):
         # districts = [(o.code for o in district)]  #[(id,name)]    
         # districts_name = [(o.name for o in district)]
         # total = zip(districts,districts_name)
-        requiremernt_id = str(order.order_number)[18:19] 
+        requiremernt_id = str(order.order_number)[20:21] 
         print(requiremernt_id)
 
         merchants = []

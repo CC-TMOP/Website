@@ -8,7 +8,7 @@ class Merchant_table(models.Model):
     merchant_tel = models.CharField(max_length=11,verbose_name='商家电话')
     merchant_address = models.CharField(max_length=64,verbose_name='商家地址',null=True)
     merchant_address_code = models.IntegerField(verbose_name='地址ID',null=True)
-    merchant_status = models.IntegerField(verbose_name='商家状态',null=True) 
+    merchant_status = models.IntegerField(verbose_name='商家状态',null=True) # 1 营业 0 打烊
     service_type = models.IntegerField(verbose_name='服务类型ID',null=True) # 1,2,3,4,5 需求大类
     block = models.IntegerField(verbose_name='区块ID',null=True)
     merchant_assistant_name = models.CharField(max_length=64,verbose_name='店员姓名', null=True)

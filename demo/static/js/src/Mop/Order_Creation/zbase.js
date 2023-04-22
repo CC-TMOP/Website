@@ -38,7 +38,9 @@ class Order_Create {
             </tr>
             <tr>
                 <td>
-                    <input type="submit">
+                    <div class="Order_Create_Submit_div">
+                        <button class="Order_Create_Submit_Button" id="Order_Create_Submit_Button">提交</button>
+                    </div>
                 </td>
                 <td>
                     <input type="reset">
@@ -49,6 +51,7 @@ class Order_Create {
 </div>
 `);
         this.$Order_Create.hide();
+        this.$menu_order_content_submit = this.$Order_Create.find(".Order_Create_Submit_Button");
         this.$phonenumber_Input = this.$Order_Create.find(".menu_order_content_phonenumber_Input");
         this.mop.$menu_order_content.append(this.$Order_Create);
 
@@ -58,6 +61,7 @@ class Order_Create {
     start() {
         this.appendRequirements();
         this.add_listening_events_phone_number();
+        this.add_listening_events_submit();
     }
 
     appendRequirements() {
@@ -66,11 +70,27 @@ class Order_Create {
 
     add_listening_events_phone_number() { // 电话框取消选中后转后端
         let outer = this;
+
         this.$phonenumber_Input.change(function() {
             if (!$(this).is(":checked")) {
                 console.log("电话框取消选中后转后端");
                 outer.mop.root.ajax.telToUsername(document.getElementById("telToUsername").value);
             }
         })
+    }
+
+    add_listening_events_submit() {
+        let outer = this;
+        this.$menu_order_content_submit.click(function() {
+            var myselect=document.getElementById("requirement");
+            var index=myselect.selectedIndex ;
+            if (index <= 0) {
+                return;
+            }
+            var username = document.getElementById("usernameFromTel").value;
+            var tel = document.getElementById("telToUsername").value;
+            var requirement_id = myselect.options[index].value;
+            outer.mop.root.ajax.PostOrderinfo(username, tel, requirement_id);
+        });
     }
 }
