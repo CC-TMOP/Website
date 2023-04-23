@@ -207,12 +207,10 @@ class Fill_Order {
     <div class="main_container">
         <div id="name"></div>
         <div class="content">
-            <div class="item1">Item1</div>
-            <div class="item_set">
-                <div class="item2">Item2</div>
-                <div class="item3">Item3</div>
-                <div class="item4">Item4</div>
-            </div>
+            <div class="item1"></div>
+            <div class="item2"></div>
+            <div class="item3"></div>
+            <div class="item4"></div>
         </div>
         <div class="menu_order_content" style="align-content: center;">
 
@@ -302,7 +300,8 @@ $.get("", function (data) {
         this.root.item4.$Track_Status.hide();
     }
 
-}class Order_Create {
+}
+class Order_Create {
     constructor(mop) {
         this.mop = mop;
         this.$Order_Create = $(`
@@ -386,11 +385,15 @@ $.get("", function (data) {
     add_listening_events_submit() {
         let outer = this;
         this.$menu_order_content_submit.click(function() {
-            console.log("$menu_order_content.click");
             var myselect=document.getElementById("requirement");
             var index=myselect.selectedIndex ;
-            console.log(index);
-            // outer.mop.root.ajax.PostOrderinfo();
+            if (index <= 0) {
+                return;
+            }
+            var username = document.getElementById("usernameFromTel").value;
+            var tel = document.getElementById("telToUsername").value;
+            var requirement_id = myselect.options[index].value;
+            outer.mop.root.ajax.PostOrderinfo(username, tel, requirement_id);
         });
     }
 }class Order_List {
@@ -400,7 +403,7 @@ $.get("", function (data) {
         this.$Order_List = $(`
 <div class="menu_order_content_3">
     <h1 class="menu_order_content_h1">订单列表</h1>
-    <table id="order-table">
+    <table class="order_table" id="order-table">
         <tbody>
             <tr>
                 <td>订单号</td>
@@ -437,7 +440,8 @@ $.get("", function (data) {
             tableBody.appendChild(row);
         });
     }
-}class Track_Status {
+}
+class Track_Status {
     constructor(mop) {
         this.mop = mop;
         this.$Track_Status = $(`
@@ -671,7 +675,25 @@ $.get("", function (data) {
         });
     }
     
-}export class Mainapp {
+    PostOrderinfo(username, tel, requirement_id) {
+        let outer = this;
+        $.ajax({
+            url:"http://123.57.187.239:8000/api/person/postOrderInfo/",
+            type:"POST",
+            data:{
+                username:username,
+                user_tel:tel,
+                requirement_id:requirement_id,
+            },
+            success:function(resp) {
+                if(resp.result==="success") {
+                    console.log("创建订单成功");
+                }
+            }
+        });
+    }
+}
+export class Mainapp {
     constructor(id) {
         this.id = id;
         this.$demoapp = $('#' + id);

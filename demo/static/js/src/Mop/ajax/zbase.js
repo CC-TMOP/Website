@@ -127,7 +127,7 @@ class Ajax {
     PostOrderinfo(username, tel, requirement_id) {
         let outer = this;
         $.ajax({
-            url:"http://123.57.187.239:8000/api/person/postOrderinfo/",
+            url:"http://123.57.187.239:8000/api/person/postOrderInfo/",
             type:"POST",
             data:{
                 username:username,
