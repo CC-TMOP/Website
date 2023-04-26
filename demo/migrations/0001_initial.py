@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('code', models.CharField(max_length=64, primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=64)),
-                ('provinceCode', models.IntegerField()),
+                ('provinceCode', models.CharField()),
             ],
         ),
         migrations.CreateModel(

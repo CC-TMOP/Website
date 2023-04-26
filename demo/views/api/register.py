@@ -26,7 +26,8 @@ def register(request):
         return JsonResponse({
             'result':"用户名已存在"
         })
-        
+    
+
     block_test = 110000000
     total = random.randint(1, 1000000000) + block_test * 1000000000
     encrypt = hashlib.md5()    # 将密码进行MD5加密
