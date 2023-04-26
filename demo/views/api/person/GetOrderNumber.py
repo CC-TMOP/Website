@@ -1,8 +1,8 @@
+import time
 from django.http import JsonResponse
 from demo.models.user.user_table import User_table
 from demo.models.order.order_table import Order_table
 
-# 生成订单号
 def getOrderNumber(request):
     user_tel = request.GET.get('user_tel')
     requirement_id = request.GET.get('requirement_id')
@@ -11,8 +11,8 @@ def getOrderNumber(request):
 
     user = User_table.objects.filter(user_tel=user_tel)
     
-    id = str(user_id)[8:] # 取第5位到末尾，总共10位
-    order_num = DataTime + str(user_id) + str(requirement_id)
+    id = str(user.user_id)[8:] # 取第5位到末尾，总共10位
+    order_num = DateTime + str(user.user_id) + str(requirement_id)
 
     # 生成订单号
     order_info=Order_table(
@@ -35,7 +35,7 @@ def getRobotOrderNumber(request):
     user = User_table.objects.filter(user_id=user_id)
     
     id = str(user_id)[5:] # 取第5位到末尾，总共10位
-    order_num = DataTime + str(user_id) + str(requirement_id)
+    order_num = DateTime + str(user_id) + str(requirement_id)
 
     # 生成订单号
     order_info=Order_table(

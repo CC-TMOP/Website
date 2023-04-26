@@ -119,7 +119,7 @@ class MainLogin  {
         let outer = this;
         this.$login_register.click(function(){
             outer.register();
-    });
+        });
         this.$login_submit.click(function(){
             let username = outer.$login_username.val();
             let password = outer.$login_password.val();

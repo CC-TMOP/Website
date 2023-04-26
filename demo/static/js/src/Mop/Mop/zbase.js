@@ -105,12 +105,10 @@ class Mop {
     <div class="main_container">
         <div id="name"></div>
         <div class="content">
-            <div class="item1">Item1</div>
-            <div class="item_set">
-                <div class="item2">Item2</div>
-                <div class="item3">Item3</div>
-                <div class="item4">Item4</div>
-            </div>
+            <div class="item1"></div>
+            <div class="item2"></div>
+            <div class="item3"></div>
+            <div class="item4"></div>
         </div>
         <div class="menu_order_content" style="align-content: center;">
 

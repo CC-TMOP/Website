@@ -29,3 +29,13 @@ def getDistrict(request):
     for i in cities:
         res.append([i.code, i.name])
     return JsonResponse({'district': res})
+
+# 获取街道信息
+def getDistrict(request):
+    district_id = request.GET.get('district_id')
+    # 获取当前市的所有县
+    cities = District.objects.filter(cityCode=district_id)
+    res = []
+    for i in cities:
+        res.append([i.code, i.name])
+    return JsonResponse({'district': res})

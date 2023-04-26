@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Worker_table(models.Model):
     worker_id = models.IntegerField(primary_key=True, verbose_name='员工ID')
     worker_name = models.CharField(max_length=64, verbose_name='员工姓名')
-    worker_type_id = models.IntegerField(verbose_name='员工类型ID')
+    worker_type_id = models.IntegerField(verbose_name='员工类型ID') 
     worker_tel = models.CharField(max_length=11,verbose_name='员工电话')
     worker_email = models.CharField(max_length=64, verbose_name='员工邮箱')
     worker_sex = models.IntegerField(verbose_name='员工性别')

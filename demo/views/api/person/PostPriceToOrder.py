@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from demo.models.merchant.merchant_table import Merchant_table
 from demo.models.order.order_table import Order_table
 
-def PostMerchantToOrder(request):
+def PostPriceToOrder(request):
     order_number = request.GET.get('order_number')
     merchant_id = request.GET.get('merchant_id')
     order_pay_type = request.GET.get('order_pay_type')

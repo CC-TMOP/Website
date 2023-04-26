@@ -6,7 +6,7 @@ class Fill_Order {
     <h1 class="menu_order_content_h1">订单内容填充</h1>
     <table style="margin: 0 auto; border-collapse: separate; border-spacing: 5px 10px;">
         <tbody>
-            <tr>
+            <tr data-id="orderid">
                 <td>
                     <label>订单号:</label>
                 </td>
@@ -53,7 +53,6 @@ class Fill_Order {
                 <td>
                     <select name="merchant" id="merchant">
                         <option value="">-------</option>
-                        <option value="1">xx餐馆</option>
                     </select>
                 </td>
             </tr>
@@ -79,8 +78,27 @@ class Fill_Order {
 `);
 
         this.$Fill_Order.hide();
-        
+        this.$merchant_Input = this.$Fill_Order.find(".merchant");
         this.mop.$menu_order_content.append(this.$Fill_Order);
+        this.start();
+    }
+
+    start() {
+        this.add_listening_events_merchant();
+    }
+
+    add_listening_events_merchant() { // 商家取消选中后转后端
+        let outer = this;
+        $(" #merchant").change(function() {
+            // var options = $("#merchant");
+            // var value = options.val();   //拿到选中项的值
+            // var text = options.text(); 
+            var myselect = document.getElementById("merchant");
+            var index=myselect.selectedIndex ;
+            console.log(myselect.options[index].value);
+            console.log(myselect.options[index].text);
+            outer.mop.root.ajax.MerchantToTel(myselect.options[index].value);
+        })
     }
 }class Mop {
     constructor(root) {
@@ -189,12 +207,10 @@ class Fill_Order {
     <div class="main_container">
         <div id="name"></div>
         <div class="content">
-            <div class="item1">Item1</div>
-            <div class="item_set">
-                <div class="item2">Item2</div>
-                <div class="item3">Item3</div>
-                <div class="item4">Item4</div>
-            </div>
+            <div class="item1"></div>
+            <div class="item2"></div>
+            <div class="item3"></div>
+            <div class="item4"></div>
         </div>
         <div class="menu_order_content" style="align-content: center;">
 
@@ -284,7 +300,8 @@ $.get("", function (data) {
         this.root.item4.$Track_Status.hide();
     }
 
-}class Order_Create {
+}
+class Order_Create {
     constructor(mop) {
         this.mop = mop;
         this.$Order_Create = $(`
@@ -324,7 +341,9 @@ $.get("", function (data) {
             </tr>
             <tr>
                 <td>
-                    <input type="submit">
+                    <div class="Order_Create_Submit_div">
+                        <button class="Order_Create_Submit_Button" id="Order_Create_Submit_Button">提交</button>
+                    </div>
                 </td>
                 <td>
                     <input type="reset">
@@ -335,6 +354,7 @@ $.get("", function (data) {
 </div>
 `);
         this.$Order_Create.hide();
+        this.$menu_order_content_submit = this.$Order_Create.find(".Order_Create_Submit_Button");
         this.$phonenumber_Input = this.$Order_Create.find(".menu_order_content_phonenumber_Input");
         this.mop.$menu_order_content.append(this.$Order_Create);
 
@@ -344,6 +364,7 @@ $.get("", function (data) {
     start() {
         this.appendRequirements();
         this.add_listening_events_phone_number();
+        this.add_listening_events_submit();
     }
 
     appendRequirements() {
@@ -352,12 +373,28 @@ $.get("", function (data) {
 
     add_listening_events_phone_number() { // 电话框取消选中后转后端
         let outer = this;
+
         this.$phonenumber_Input.change(function() {
             if (!$(this).is(":checked")) {
                 console.log("电话框取消选中后转后端");
                 outer.mop.root.ajax.telToUsername(document.getElementById("telToUsername").value);
             }
         })
+    }
+
+    add_listening_events_submit() {
+        let outer = this;
+        this.$menu_order_content_submit.click(function() {
+            var myselect=document.getElementById("requirement");
+            var index=myselect.selectedIndex ;
+            if (index <= 0) {
+                return;
+            }
+            var username = document.getElementById("usernameFromTel").value;
+            var tel = document.getElementById("telToUsername").value;
+            var requirement_id = myselect.options[index].value;
+            outer.mop.root.ajax.PostOrderinfo(username, tel, requirement_id);
+        });
     }
 }class Order_List {
     constructor(mop) {
@@ -366,7 +403,7 @@ $.get("", function (data) {
         this.$Order_List = $(`
 <div class="menu_order_content_3">
     <h1 class="menu_order_content_h1">订单列表</h1>
-    <table id="order-table">
+    <table class="order_table" id="order-table">
         <tbody>
             <tr>
                 <td>订单号</td>
@@ -403,7 +440,8 @@ $.get("", function (data) {
             tableBody.appendChild(row);
         });
     }
-}class Track_Status {
+}
+class Track_Status {
     constructor(mop) {
         this.mop = mop;
         this.$Track_Status = $(`
@@ -574,16 +612,25 @@ $.get("", function (data) {
     GetOrderIdToInfo(OrderId) {
         let outer = this;
         $.ajax({
-            url:"",
+            url:"http://123.57.187.239:8000/api/person/getOrderIdToInfo/",
             type:"GET",
             data:{
-                OrderId:OrderId,
+                order_number:OrderId,
             },
             success:function(resp) {
                 if(resp.result==="success") {
-                    var input = $('table tr[data-id="username"] input[type="text"]');
-                    input.val(resp.username);
-                    
+                    var inputusername = $('table tr[data-id="username"] input[type="text"]');
+                    var inputorderid = $('table tr[data-id="orderid"] input[type="text"]');
+                    var inputtel = $('table tr[data-id="phonenumber"] input[type="text"]');
+                    var inputrequirement = $('table tr[data-id="requirement"] input[type="text"]');
+                    var inputuseraddress = $('table tr[data-id="useraddress"] input[type="text"]');
+
+                    inputorderid.val(OrderId);
+                    inputusername.val(resp.username);
+                    inputtel.val(resp.phonenumber);
+                    inputrequirement.val(resp.requirement);
+                    inputuseraddress.val(resp.useraddress);
+                    outer.DistrictToMerchant(resp.city, OrderId);
                     outer.root.mop.hide_item();
                     outer.root.item2.$Fill_Order.show();
                     outer.root.mop.$menu_order_content.show();
@@ -591,8 +638,62 @@ $.get("", function (data) {
             }
         });
     }
+
+    DistrictToMerchant(districtcode, order_number) {
+        let outer = this;
+        $.ajax({
+            url:"http://123.57.187.239:8000/api/person/getDistrictToMerchant/",
+            type:"GET",
+            data:{
+                order_number:order_number,
+                districtcode:districtcode,
+            },
+            success:function(resp) {
+                if(resp.result==="success") {
+                    for(var i = 0;i < resp.districts.length; i++){
+                        let $new = $("<option value="+resp.districts[i][0]+">"+resp.districts[i][1]+"</option>");
+                        $("#merchant").append($new);
+                    }
+                }
+            }
+        });
+    }
+
+    MerchantToTel(id) {
+        let outer = this;
+        $.ajax({
+            url:"http://123.57.187.239:8000/api/person/getMerchantNameToTel/",
+            type:"GET",
+            data:{
+                merchant_id:id,
+            },
+            success:function(resp) {
+                if(resp.result==="success") {
+                    document.getElementById("Business_telephone_numberr").value = resp.merchant_phonenumber;
+                }
+            }
+        });
+    }
     
-}export class Mainapp {
+    PostOrderinfo(username, tel, requirement_id) {
+        let outer = this;
+        $.ajax({
+            url:"http://123.57.187.239:8000/api/person/postOrderInfo/",
+            type:"POST",
+            data:{
+                username:username,
+                user_tel:tel,
+                requirement_id:requirement_id,
+            },
+            success:function(resp) {
+                if(resp.result==="success") {
+                    console.log("创建订单成功");
+                }
+            }
+        });
+    }
+}
+export class Mainapp {
     constructor(id) {
         this.id = id;
         this.$demoapp = $('#' + id);
