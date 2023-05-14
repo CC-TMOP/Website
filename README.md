@@ -396,19 +396,20 @@ return JsonResponse({
 })
 ```
 
-### 14. PostPriceToOrder.接口【未定，涉及到扣款操作】
+### 14. PostPriceToOrder.接口【扣款接口】
 
 - 接口 URL:未定义
 - 调用方式: Post
 - 参数格式:
 - 接口说明：前端发送订单号，需求id，结算类型，订单状态，后端去查询该需求的价格，并查询用户享受的折扣，计算出当前订单的金额，将金额和订单状态更新到数据库中，最后根据结算方式，判断是否要从账户进行扣款
+- 详细实现思路：看issue《关于PostPriceToOrder.py接口的修改建议》
 
 | 参数名称    | 参数类型 | 是否必选 | 参数说明 |
 | ----------- | -------- | -------- | -------- |
 |order_number      | Number | 是    | 订单号   |
 |requirement_id  | string | 是    | 需求id   |
 |order_pay_type     | int    | 是    | 结算类型  |
-|order_status | int    | 是    | 订单状态为已完成  |
+|order_status | int    | 是    | 订单状态  |
 
 - 响应格式
 
