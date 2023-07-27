@@ -396,7 +396,7 @@ return JsonResponse({
 })
 ```
 
-### 14. PostPriceToOrder.接口【扣款接口】
+### 14. PostPriceToOrder.接口【扣款接口】 (to do)
 
 - 接口 URL:未定义
 - 调用方式: Post
@@ -447,7 +447,7 @@ return JsonResponse({
 })
 ```
 
-### 16. PostAddUserInfo接口【插入用户信息的接口】
+### 16. PostAddUserInfo接口【插入用户信息的接口】(to do)
 
 - 接口 URL:未定义
 - 调用方式: Post
@@ -471,7 +471,7 @@ return JsonResponse({
 | -------- | -------- | -------- | -------- |
 | result   | string   | 是      | 返回结果success |
 
-### 17. PostAddMerchantInfo接口【插入商家信息的接口】
+### 17. PostAddMerchantInfo接口【插入商家信息的接口】(to do)
 
 - 接口 URL:未定义
 - 调用方式: Post
@@ -496,7 +496,7 @@ return JsonResponse({
 | result   | string   | 是      | 返回结果success |
 
 
-### 18. PostAddWorkerInfo接口【插入员工信息的接口】
+### 18. PostAddWorkerInfo接口【插入员工信息的接口】(to do)
 
 - 接口 URL:未定义
 - 调用方式: Post
